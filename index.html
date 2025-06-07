@@ -14,6 +14,7 @@
             display: flex;
             justify-content: center;
             padding: 2rem 0;
+            line-height: 1.5; /* Improved line height for readability */
         }
         .form-container {
             background-color: #ffffff;
@@ -161,10 +162,41 @@
             padding-top: 1.5rem;
             border-top: 2px dashed #bfdbfe;
         }
+        .export-button {
+            display: block;
+            width: fit-content;
+            margin: 2rem auto 0 auto;
+            padding: 1rem 2rem;
+            background-color: #10b981; /* Green button */
+            color: white;
+            font-weight: bold;
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .export-button:hover {
+            background-color: #059669; /* Darker green on hover */
+            transform: translateY(-2px);
+        }
+        .export-button:active {
+            background-color: #047857;
+            transform: translateY(0);
+            box-shadow: none;
+        }
+        /* Style for temporary content visibility during PDF generation */
+        .pdf-temp-content {
+            display: none; /* Hide temporary elements from view */
+        }
     </style>
+    <!-- jsPDF and html2canvas libraries for PDF export -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 <body>
-    <div class="form-container">
+    <div class="form-container" id="formContainer">
         <header class="text-center mb-6">
             <h1 class="text-lg font-bold text-gray-800">SPANISH CONSULAR SERVICE</h1>
             <h2 class="text-xl font-extrabold text-blue-700 mt-2">CONSULAR CIVIL REGISTRY OF SPAIN IN</h2>
@@ -478,6 +510,129 @@
                 </p>
             </div>
         </section>
+
+        <!-- Export to PDF Button -->
+        <button class="export-button" onclick="exportFormAsPdf()">Export Form as PDF</button>
+
     </div>
+
+    <script>
+        /**
+         * @function exportFormAsPdf
+         * @description Captures the content of the form, converts it to an image using html2canvas,
+         * and then generates a PDF using jsPDF, downloading the file.
+         */
+        async function exportFormAsPdf() {
+            const formContainer = document.getElementById('formContainer');
+            // Temporarily hide the export button to prevent it from appearing in the PDF
+            const exportButton = document.querySelector('.export-button');
+            if (exportButton) {
+                exportButton.style.display = 'none';
+            }
+
+            // Temporarily replace input fields with their values for PDF rendering
+            const inputs = formContainer.querySelectorAll('input, select, textarea');
+            const originalContents = {}; // Store original content to restore later
+
+            inputs.forEach((input, index) => {
+                const tempSpan = document.createElement('span');
+                tempSpan.className = 'pdf-temp-content'; // Apply a class to easily hide/show
+                let displayValue = '';
+
+                if (input.type === 'radio') {
+                    // For radio buttons, display checked value if applicable
+                    if (input.checked) {
+                        displayValue = input.nextSibling && input.nextSibling.nodeType === 3 ? input.nextSibling.textContent.trim() : input.value;
+                        tempSpan.textContent = `[${input.name.replace(/([A-Z])/g, ' $1').trim()}: ${displayValue}]`;
+                        input.style.display = 'none'; // Hide the actual radio input
+                        input.parentNode.insertBefore(tempSpan, input.nextSibling); // Insert after the label text
+                    } else {
+                        // If not checked, hide the radio button and its label
+                        input.style.display = 'none';
+                        if (input.parentNode.tagName === 'LABEL') {
+                            input.parentNode.style.display = 'none';
+                        }
+                    }
+                } else if (input.tagName === 'SELECT') {
+                    displayValue = input.options[input.selectedIndex].text;
+                    originalContents[index] = { element: input, type: 'select', value: input.value };
+                    input.style.display = 'none';
+                    tempSpan.textContent = displayValue;
+                    input.parentNode.appendChild(tempSpan);
+                } else {
+                    displayValue = input.value;
+                    originalContents[index] = { element: input, type: 'input', value: input.value };
+                    input.style.display = 'none'; // Hide the input field
+                    tempSpan.textContent = displayValue; // Display its value as text
+                    input.parentNode.appendChild(tempSpan);
+                }
+            });
+
+
+            // Generate canvas from the form container
+            try {
+                const canvas = await html2canvas(formContainer, {
+                    scale: 2, // Increase scale for better resolution
+                    useCORS: true, // Enable CORS if you have external resources (like images)
+                    windowWidth: formContainer.scrollWidth,
+                    windowHeight: formContainer.scrollHeight + 100 // Add some buffer for content not fitting exactly
+                });
+
+                const imgData = canvas.toDataURL('image/png');
+                const { jsPDF } = window.jspdf; // Get jsPDF from global scope
+
+                const pdf = new jsPDF({
+                    orientation: 'portrait',
+                    unit: 'px',
+                    format: 'a4'
+                });
+
+                const imgWidth = pdf.internal.pageSize.getWidth();
+                const pageHeight = pdf.internal.pageSize.getHeight();
+                const imgHeight = canvas.height * imgWidth / canvas.width;
+                let heightLeft = imgHeight;
+                let position = 0;
+
+                pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+                heightLeft -= pageHeight;
+
+                while (heightLeft >= 0) {
+                    position = heightLeft - imgHeight;
+                    pdf.addPage();
+                    pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+                    heightLeft -= pageHeight;
+                }
+
+                pdf.save('Spanish_Citizenship_Form.pdf');
+
+            } catch (error) {
+                console.error("Error generating PDF:", error);
+                // In a real application, you might show a user-friendly message here.
+            } finally {
+                // Restore original input fields and hide temporary content
+                inputs.forEach((input, index) => {
+                    if (input.type === 'radio') {
+                         input.style.display = ''; // Show radio input
+                         if (input.parentNode.tagName === 'LABEL') {
+                             input.parentNode.style.display = ''; // Show parent label if hidden
+                         }
+                    } else if (originalContents[index]) {
+                        originalContents[index].element.style.display = ''; // Show original input
+                    }
+                });
+
+                // Remove all temporary spans
+                const tempSpans = formContainer.querySelectorAll('.pdf-temp-content');
+                tempSpans.forEach(span => span.remove());
+
+
+                // Restore the export button
+                if (exportButton) {
+                    exportButton.style.display = 'block';
+                }
+            }
+        }
+    </script>
 </body>
 </html>
+
