@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spanish Birth Registration Form (English)</title>
+    <!-- Tailwind CSS CDN for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom styles for better readability and PDF-like appearance */
+        body {
+            font-family: 'Inter', sans-serif; /* Using Inter font as per instructions */
+            background-color: #f0f4f8; /* Light background */
+            display: flex;
+            justify-content: center;
+            padding: 2rem 0;
+        }
+        .form-container {
+            background-color: #ffffff;
+            padding: 2.5rem;
+            border-radius: 0.75rem; /* Rounded corners */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            max-width: 800px; /* Max width for better form layout */
+            width: 100%; /* Fluid width */
+            margin: 0 1rem; /* Margin on smaller screens */
+            box-sizing: border-box; /* Include padding in width */
+        }
+        .section-title {
+            font-size: 1.5rem; /* Larger font for section titles */
+            font-weight: 700; /* Bold */
+            color: #1e3a8a; /* Dark blue color */
+            margin-bottom: 1.5rem;
+            text-align: center;
+            border-bottom: 2px solid #bfdbfe; /* Subtle underline */
+            padding-bottom: 0.5rem;
+        }
+        .subsection-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #3b82f6; /* Medium blue color */
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+            border-bottom: 1px dashed #93c5fd; /* Dashed underline */
+            padding-bottom: 0.3rem;
+        }
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        .form-group label {
+            display: block;
+            font-weight: 500;
+            color: #334155; /* Slightly dark gray for labels */
+            margin-bottom: 0.25rem;
+            font-size: 0.95rem;
+        }
+        .form-group input[type="text"],
+        .form-group input[type="date"],
+        .form-group input[type="time"],
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #cbd5e1; /* Light gray border */
+            border-radius: 0.375rem; /* Slightly rounded corners */
+            font-size: 1rem;
+            color: #1f2937; /* Dark text */
+            box-sizing: border-box; /* Include padding in width */
+            transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #3b82f6; /* Blue focus border */
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25); /* Blue glow on focus */
+            outline: none;
+        }
+        .grid-layout {
+            display: grid;
+            gap: 1rem;
+            grid-template-columns: repeat(1, minmax(0, 1fr)); /* Single column by default */
+        }
+        @media (min-width: 640px) { /* Small screens and up */
+            .grid-layout {
+                grid-template-columns: repeat(2, minmax(0, 1fr)); /* Two columns */
+            }
+            .grid-layout.three-cols {
+                grid-template-columns: repeat(3, minmax(0, 1fr)); /* Three columns */
+            }
+        }
+        @media (min-width: 768px) { /* Medium screens and up */
+            .grid-layout {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+            .grid-layout.three-cols {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+        }
+        .full-width {
+            grid-column: span 1; /* Occupy full width in grid */
+        }
+        @media (min-width: 640px) {
+            .full-width-sm {
+                grid-column: span 2;
+            }
+            .full-width-sm.three-cols {
+                grid-column: span 3;
+            }
+        }
+        .radio-group {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+        .radio-group input[type="radio"] {
+            margin-right: 0.5rem;
+        }
+        .radio-group label {
+            display: inline-flex;
+            align-items: center;
+            font-weight: normal;
+        }
+        .notes {
+            background-color: #e0f2fe; /* Light blue for notes */
+            border-left: 5px solid #2196f3; /* Blue left border */
+            padding: 1rem 1.25rem;
+            margin-top: 2rem;
+            border-radius: 0.5rem;
+            color: #0c4a6e; /* Darker blue text */
+        }
+        .notes p {
+            margin-bottom: 0.5rem;
+            line-height: 1.4;
+        }
+        .notes ul {
+            list-style-type: disc;
+            margin-left: 1.25rem;
+        }
+        .notes li {
+            margin-bottom: 0.25rem;
+        }
+        .signature-box {
+            border: 1px solid #cbd5e1;
+            min-height: 5rem;
+            width: 100%;
+            margin-top: 1rem;
+            border-radius: 0.375rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #64748b;
+            font-style: italic;
+        }
+        .form-footer {
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            color: #64748b;
+            text-align: center;
+        }
+        .instruction-section {
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 2px dashed #bfdbfe;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <header class="text-center mb-6">
+            <h1 class="text-lg font-bold text-gray-800">SPANISH CONSULAR SERVICE</h1>
+            <h2 class="text-xl font-extrabold text-blue-700 mt-2">CONSULAR CIVIL REGISTRY OF SPAIN IN</h2>
+            <h3 class="text-3xl font-black text-gray-900 mt-4">CIVIL REGISTRY</h3>
+        </header>
+
+        <section class="mb-8">
+            <p class="text-lg font-semibold text-center mb-4">Section I. BIRTHS</p>
+            <p class="text-xl font-bold text-center text-blue-600">(Declaration of data for registration)</p>
+            <p class="text-sm italic text-center mt-4 text-red-600">Important note: Before filling out, see instructions on the back (below).</p>
+        </section>
+
+        <!-- BIRTH DATA SECTION -->
+        <section>
+            <div class="subsection-title">BIRTH DATA</div>
+            <div class="grid-layout">
+                <div class="form-group">
+                    <label for="born-name">Name (1)</label>
+                    <input type="text" id="born-name" name="bornName" placeholder="First Name(s)">
+                </div>
+                <div class="form-group">
+                    <label for="born-first-surname">First Surname</label>
+                    <input type="text" id="born-first-surname" name="bornFirstSurname" placeholder="Father's or first surname">
+                </div>
+                <div class="form-group">
+                    <label for="born-second-surname">Second Surname (2)</label>
+                    <input type="text" id="born-second-surname" name="bornSecondSurname" placeholder="Mother's or second surname">
+                </div>
+                <div class="form-group">
+                    <label for="born-sex">Sex</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="bornSex" value="male"> Male</label>
+                        <label><input type="radio" name="bornSex" value="female"> Female</label>
+                        <label><input type="radio" name="bornSex" value="other"> Other</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="subsection-title">BIRTH DETAILS</div>
+            <div class="grid-layout three-cols">
+                <div class="form-group">
+                    <label for="birth-hour">Hour</label>
+                    <input type="time" id="birth-hour" name="birthHour">
+                </div>
+                <div class="form-group">
+                    <label for="birth-day">Day (3)</label>
+                    <input type="text" id="birth-day" name="birthDay" placeholder="e.g., 'Seventh'">
+                </div>
+                <div class="form-group">
+                    <label for="birth-month">Month</label>
+                    <input type="text" id="birth-month" name="birthMonth" placeholder="e.g., 'January'">
+                </div>
+                <div class="form-group full-width-sm three-cols">
+                    <label for="birth-year">Year</label>
+                    <input type="text" id="birth-year" name="birthYear" placeholder="e.g., 'Two thousand and twenty-four'">
+                </div>
+                <div class="form-group full-width-sm three-cols">
+                    <label for="birth-place">Place (4)</label>
+                    <input type="text" id="birth-place" name="birthPlace" placeholder="Locality, District, Province, State">
+                </div>
+            </div>
+
+            <div class="grid-layout three-cols mt-4">
+                <div class="form-group full-width-sm three-cols">
+                    <label for="registered-date">Registered on (Date)</label>
+                    <input type="date" id="registered-date" name="registeredDate">
+                </div>
+                <div class="form-group full-width-sm three-cols">
+                    <label for="registered-local-registry">in the Local Registry of</label>
+                    <input type="text" id="registered-local-registry" name="registeredLocalRegistry" placeholder="Local Registry Name">
+                </div>
+                <div class="form-group">
+                    <label for="registered-volume">in Volume</label>
+                    <input type="text" id="registered-volume" name="registeredVolume">
+                </div>
+                <div class="form-group">
+                    <label for="registered-page">Page</label>
+                    <input type="text" id="registered-page" name="registeredPage">
+                </div>
+                <div class="form-group">
+                    <label for="registered-number">No.</label>
+                    <input type="text" id="registered-number" name="registeredNumber">
+                </div>
+            </div>
+        </section>
+
+        <!-- FATHER'S DATA SECTION -->
+        <section>
+            <div class="subsection-title">FATHER'S DATA (5)</div>
+            <div class="grid-layout">
+                <div class="form-group">
+                    <label for="father-name">Name</label>
+                    <input type="text" id="father-name" name="fatherName">
+                </div>
+                <div class="form-group">
+                    <label for="father-first-surname">First Surname</label>
+                    <input type="text" id="father-first-surname" name="fatherFirstSurname">
+                </div>
+                <div class="form-group full-width">
+                    <label for="father-second-surname">Second Surname</label>
+                    <input type="text" id="father-second-surname" name="fatherSecondSurname">
+                </div>
+                <div class="form-group full-width">
+                    <label for="father-parentage">Son of</label>
+                    <input type="text" id="father-parentage" name="fatherParentage" placeholder="Father's Mother's Name and Mother's Father's Name">
+                </div>
+                <div class="form-group full-width">
+                    <label for="father-born-place">Born in</label>
+                    <input type="text" id="father-born-place" name="fatherBornPlace">
+                </div>
+                <div class="form-group">
+                    <label for="father-born-day">on the day</label>
+                    <input type="date" id="father-born-day" name="fatherBornDay">
+                </div>
+                <div class="form-group full-width">
+                    <label for="father-civil-status-birth">Civil status at the birth of the child</label>
+                    <input type="text" id="father-civil-status-birth" name="fatherCivilStatusBirth">
+                </div>
+                <div class="form-group full-width">
+                    <label for="father-civil-status-current">Civil status at present</label>
+                    <input type="text" id="father-civil-status-current" name="fatherCivilStatusCurrent">
+                </div>
+                <div class="form-group full-width">
+                    <label for="father-nationality-birth">Nationality at the birth of the child</label>
+                    <input type="text" id="father-nationality-birth" name="fatherNationalityBirth">
+                </div>
+                <div class="form-group full-width">
+                    <label for="father-nationality-current">Nationality at present</label>
+                    <input type="text" id="father-nationality-current" name="fatherNationalityCurrent">
+                </div>
+                <div class="form-group full-width">
+                    <label for="father-address">Address</label>
+                    <input type="text" id="father-address" name="fatherAddress">
+                </div>
+                <div class="form-group full-width">
+                    <label for="father-dni">D.N.I. (National Identity Document)</label>
+                    <input type="text" id="father-dni" name="fatherDni">
+                </div>
+            </div>
+        </section>
+
+        <!-- MOTHER'S DATA SECTION -->
+        <section>
+            <div class="subsection-title">MOTHER'S DATA (5)</div>
+            <div class="grid-layout">
+                <div class="form-group">
+                    <label for="mother-name">Name</label>
+                    <input type="text" id="mother-name" name="motherName">
+                </div>
+                <div class="form-group">
+                    <label for="mother-first-surname">First Surname</label>
+                    <input type="text" id="mother-first-surname" name="motherFirstSurname">
+                </div>
+                <div class="form-group full-width">
+                    <label for="mother-second-surname">Second Surname</label>
+                    <input type="text" id="mother-second-surname" name="motherSecondSurname">
+                </div>
+                <div class="form-group full-width">
+                    <label for="mother-parentage">Daughter of</label>
+                    <input type="text" id="mother-parentage" name="motherParentage" placeholder="Mother's Mother's Name and Mother's Father's Name">
+                </div>
+                <div class="form-group full-width">
+                    <label for="mother-born-place">Born in</label>
+                    <input type="text" id="mother-born-place" name="motherBornPlace">
+                </div>
+                <div class="form-group">
+                    <label for="mother-born-day">on the day</label>
+                    <input type="date" id="mother-born-day" name="motherBornDay">
+                </div>
+                <div class="form-group full-width">
+                    <label for="mother-civil-status-birth">Civil status at the birth of the child</label>
+                    <input type="text" id="mother-civil-status-birth" name="motherCivilStatusBirth">
+                </div>
+                <div class="form-group full-width">
+                    <label for="mother-civil-status-current">Civil status at present</label>
+                    <input type="text" id="mother-civil-status-current" name="motherCivilStatusCurrent">
+                </div>
+                <div class="form-group full-width">
+                    <label for="mother-nationality-birth">Nationality at the birth of the child</label>
+                    <input type="text" id="mother-nationality-birth" name="motherNationalityBirth">
+                </div>
+                <div class="form-group full-width">
+                    <label for="mother-nationality-current">Nationality at present</label>
+                    <input type="text" id="mother-nationality-current" name="motherNationalityCurrent">
+                </div>
+                <div class="form-group full-width">
+                    <label for="mother-address">Address</label>
+                    <input type="text" id="mother-address" name="motherAddress">
+                </div>
+                <div class="form-group full-width">
+                    <label for="mother-dni">D.N.I. (National Identity Document)</label>
+                    <input type="text" id="mother-dni" name="motherDni">
+                </div>
+            </div>
+        </section>
+
+        <!-- PAGE 2 - Continues on back.../ -->
+        <div class="form-footer text-right italic mt-8 pb-4 border-b border-gray-300">
+            Continues on back.../
+        </div>
+
+        <!-- PARENTS' MARRIAGE SECTION -->
+        <section class="mt-8">
+            <div class="subsection-title">PARENTS' MARRIAGE (6)</div>
+            <div class="grid-layout">
+                <div class="form-group full-width">
+                    <label for="marriage-date">Day of celebration</label>
+                    <input type="date" id="marriage-date" name="marriageDate">
+                </div>
+                <div class="form-group full-width">
+                    <label for="marriage-place">Place of celebration</label>
+                    <input type="text" id="marriage-place" name="marriagePlace">
+                </div>
+                <div class="form-group full-width">
+                    <label for="marriage-registered-in">Registered in</label>
+                    <input type="text" id="marriage-registered-in" name="marriageRegisteredIn">
+                </div>
+                <div class="form-group full-width">
+                    <label for="marriage-document">Supporting document presented</label>
+                    <input type="text" id="marriage-document" name="marriageDocument">
+                </div>
+            </div>
+        </section>
+
+        <!-- OBSERVATIONS SECTION -->
+        <section>
+            <div class="subsection-title">OBSERVATIONS (7)</div>
+            <div class="form-group">
+                <textarea id="observations" name="observations" rows="4" class="w-full" placeholder="Enter any relevant observations here."></textarea>
+            </div>
+        </section>
+
+        <!-- DECLARANT SECTION -->
+        <section>
+            <div class="subsection-title">DECLARANT (8)</div>
+            <div class="form-group">
+                <label for="declarant-name">Mr./Ms.</label>
+                <input type="text" id="declarant-name" name="declarantName">
+            </div>
+            <div class="grid-layout">
+                <div class="form-group">
+                    <label for="declarant-capacity">In the capacity of</label>
+                    <input type="text" id="declarant-capacity" name="declarantCapacity" placeholder="e.g., Interested party, father, mother, etc.">
+                </div>
+                <div class="form-group">
+                    <label for="declarant-native">Native of</label>
+                    <input type="text" id="declarant-native" name="declarantNative">
+                </div>
+                <div class="form-group">
+                    <label for="declarant-dob">Date of birth</label>
+                    <input type="date" id="declarant-dob" name="declarantDob">
+                </div>
+                <div class="form-group">
+                    <label for="declarant-pob">Place of birth</label>
+                    <input type="text" id="declarant-pob" name="declarantPob">
+                </div>
+                <div class="form-group full-width">
+                    <label for="declarant-address">Address</label>
+                    <input type="text" id="declarant-address" name="declarantAddress">
+                </div>
+                <div class="form-group">
+                    <label for="declarant-phone">Telephone</label>
+                    <input type="tel" id="declarant-phone" name="declarantPhone">
+                </div>
+                <div class="form-group">
+                    <label for="declarant-cp">C.P. (Postal Code)</label>
+                    <input type="text" id="declarant-cp" name="declarantCp">
+                </div>
+                <div class="form-group full-width">
+                    <label for="declarant-supporting-doc">Supporting document</label>
+                    <input type="text" id="declarant-supporting-doc" name="declarantSupportingDoc">
+                </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row justify-between items-center mt-6">
+                <div class="form-group mb-4 sm:mb-0 w-full sm:w-1/2">
+                    <label for="declarant-signature-place">In</label>
+                    <input type="text" id="declarant-signature-place" name="declarantSignaturePlace">
+                </div>
+                <div class="form-group w-full sm:w-1/2 flex justify-end items-center gap-2">
+                    <label for="declarant-signature-date">on</label>
+                    <input type="date" id="declarant-signature-date" name="declarantSignatureDate" class="w-auto">
+                </div>
+            </div>
+            <div class="form-group mt-4">
+                <label for="declarant-signature">Declarant's signature (9)</label>
+                <div class="signature-box">
+                    <p>Sign here</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- INSTRUCTIONS SECTION -->
+        <section class="instruction-section">
+            <h2 class="section-title">INSTRUCTIONS</h2>
+            <div class="notes">
+                <p class="font-semibold text-lg mb-2">Fill in by typewriter or by hand in block letters.</p>
+                <ul>
+                    <li><strong class="font-semibold">(1) Name:</strong> Only birth registrations stating two simple names (e.g., José Luis) or one compound name (e.g., María del Carmen) may be performed. Foreign names with a translation into any Spanish language must be entered in the version chosen by the person who is to impose the name (Castilian, Catalan, Basque, Galician, etc.).</li>
+                    <li><strong class="font-semibold">(2) Surnames:</strong> Birth registrations must be carried out stating two surnames, including those registrations of foreign persons who have acquired Spanish nationality.</li>
+                    <li><strong class="font-semibold">(3) Day:</strong> Enter the data in letters (e.g., 'Seventh').</li>
+                    <li><strong class="font-semibold">(4) Place:</strong> Indicate locality, district, province, and State.</li>
+                    <li><strong class="font-semibold">(5) Parent Data:</strong> In the case of non-marital filiation, the progenitor requesting the registration shall not state the name of the other progenitor, unless the filiation has already been established with respect to the latter, in which case it must be documented. In the case of unknown filiation, the names of the father and mother will be stated for identification purposes only.</li>
+                    <li><strong class="font-semibold">(6) Parents' Marriage:</strong> Indicate "Exists" or "Does Not Exist" if parents were married.</li>
+                    <li><strong class="font-semibold">(7) Observations:</strong> In case of multiple birth, the order of birth will be stated here.</li>
+                    <li><strong class="font-semibold">(8) Declarant:</strong> This refers to the Interested party, father, mother, etc.</li>
+                    <li><strong class="font-semibold">(9) Signature:</strong> If unable or unwilling to sign, two witnesses will do so at their request, who will state their name, two surnames, and address clearly legible below the signature.</li>
+                </ul>
+                <p class="mt-4 font-bold text-sm">
+                    NOTE: The submission of titles for registration by third parties is permitted. However, the Civil Registry is not obliged to maintain correspondence or inform them, unless they are duly authorized in writing. In the event that the initiation of the procedure is promoted, it can only be initiated by the interested parties themselves or by lawyers or attorneys expressly authorized for this purpose.
+                </p>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
