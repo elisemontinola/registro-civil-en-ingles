@@ -1,10 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Spanish Birth Registration Form (English Input, Spanish Export)</title>
-    <!-- Tailwind CSS CDN for styling -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         /* Custom styles for better readability and PDF-like appearance */
@@ -207,7 +207,6 @@
         .language-button {
             display: block;
             width: fit-content;
-            margin: 0.5rem auto;
             padding: 0.75rem 1.5rem;
             background-color: #60a5fa; /* Blue button */
             color: white;
@@ -249,7 +248,6 @@
             display: none !important;
         }
     </style>
-    <!-- jsPDF and html2canvas libraries for PDF export -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
@@ -267,7 +265,11 @@
             <p class="text-sm italic text-center mt-4 text-red-600" data-en="Important note: Before filling out, see instructions on the back (below)." data-es="Nota importante: Antes de cumplimentar ver instrucciones al dorso.">Important note: Before filling out, see instructions on the back (below).</p>
         </section>
 
-        <!-- BIRTH DATA SECTION -->
+        <div class="language-buttons-container">
+            <button class="language-button" onclick="toggleLanguage('es')">Traducir al Español</button>
+            <button class="language-button" onclick="toggleLanguage('en')">Revertir al Inglés</button>
+        </div>
+
         <section>
             <div class="subsection-title" data-en="BIRTH DATA" data-es="DATOS DEL NACIDO">BIRTH DATA</div>
             <div class="grid-layout">
@@ -341,7 +343,6 @@
             </div>
         </section>
 
-        <!-- FATHER'S DATA SECTION -->
         <section>
             <div class="subsection-title" data-en="FATHER'S DATA (5)" data-es="DATOS DEL PADRE (5)">FATHER'S DATA (5)</div>
             <div class="grid-layout">
@@ -396,7 +397,6 @@
             </div>
         </section>
 
-        <!-- MOTHER'S DATA SECTION -->
         <section>
             <div class="subsection-title" data-en="MOTHER'S DATA (5)" data-es="DATOS DE LA MADRE (5)">MOTHER'S DATA (5)</div>
             <div class="grid-layout">
@@ -451,12 +451,10 @@
             </div>
         </section>
 
-        <!-- PAGE 2 - Continues on back.../ -->
         <div class="form-footer text-right italic mt-8 pb-4 border-b border-gray-300" data-en="Continues on back.../" data-es="Sigue al dorso.../">
             Continues on back.../
         </div>
 
-        <!-- PARENTS' MARRIAGE SECTION -->
         <section class="mt-8">
             <div class="subsection-title" data-en="PARENTS' MARRIAGE (6)" data-es="MATRIMONIO DE LOS PADRES (6)">PARENTS' MARRIAGE (6)</div>
             <div class="grid-layout">
@@ -479,7 +477,6 @@
             </div>
         </section>
 
-        <!-- OBSERVATIONS SECTION -->
         <section>
             <div class="subsection-title" data-en="OBSERVATIONS (7)" data-es="OBSERVACIONES (7)">OBSERVATIONS (7)</div>
             <div class="form-group">
@@ -487,13 +484,12 @@
             </div>
         </section>
 
-        <!-- DECLARANT SECTION -->
         <section>
             <div class="subsection-title" data-en="DECLARANT (8)" data-es="DECLARANTE (8)">DECLARANT (8)</div>
             <div class="form-group">
-                <label for="declarant-name" data-en="Mr./Ms." data-es="D./Dª.">Mr./Ms.</label>
-                <input type="text" id="declarant-name" name="declarantName">
-            </div>
+                    <label for="declarant-name" data-en="Mr./Ms." data-es="D./Dª.">Mr./Ms.</label>
+                    <input type="text" id="declarant-name" name="declarantName">
+                </div>
             <div class="grid-layout">
                 <div class="form-group">
                     <label for="declarant-capacity" data-en="In the capacity of" data-es="En calidad de">In the capacity of</label>
@@ -547,7 +543,6 @@
             </div>
         </section>
 
-        <!-- INSTRUCTIONS SECTION -->
         <section class="instruction-section">
             <h2 class="section-title" data-en="INSTRUCTIONS" data-es="INSTRUCCIONES">INSTRUCTIONS</h2>
             <div class="notes">
@@ -556,7 +551,7 @@
                     <li><strong class="font-semibold" data-en="(1) Name:" data-es="(1) Nombre:">(1) Name:</strong> <span data-en="Only birth registrations stating two simple names (e.g., José Luis) or one compound name (e.g., María del Carmen) may be performed. Foreign names with a translation into any Spanish language must be entered in the version chosen by the person who is to impose the name (Castilian, Catalan, Basque, Galician, etc.)." data-es="Unicamente se podrán practicar inscripciones de nacimiento haciendo constar dos nombres simples (p. e., José Luis o uno compuesto, María del Carmen). Los nombres extranjeros que tengan traducción a cualquiera de las lenguas españolas deberán consignarse en la versión que elija quien haya de imponer el nombre (castellana, catalana, vasca, gallega, etc.).">Only birth registrations stating two simple names (e.g., José Luis) or one compound name (e.g., María del Carmen) may be performed. Foreign names with a translation into any Spanish language must be entered in the version chosen by the person who is to impose the name (Castilian, Catalan, Basque, Galician, etc.).</span></li>
                     <li><strong class="font-semibold" data-en="(2) Surnames:" data-es="(2) Apellidos:">(2) Surnames:</strong> <span data-en="Birth registrations must be carried out stating two surnames, including those registrations of foreign persons who have acquired Spanish nationality." data-es="Las inscripciones de nacimiento habrán de practicarse haciendo constar dos apellidos, incluso aquellas inscripciones de personas extranjeras que hayan adquirido la nacionalidad española.">Birth registrations must be carried out stating two surnames, including those registrations of foreign persons who have acquired Spanish nationality.</span></li>
                     <li><strong class="font-semibold" data-en="(3) Day:" data-es="(3) Día:">(3) Day:</strong> <span data-en="Enter the data in letters (e.g., 'Seventh')." data-es="Consignar el dato en letra.">Enter the data in letters (e.g., 'Seventh').</span></li>
-                    <li><strong class="font-semibold" data-en="(4) Place:" data-es="(4) Lugar:">(4) Place:</strong> <span data-en="Indicate locality, district, province, and State." data-es="Indicar localidad, distrito, provincia y Estado.">Indicate locality, district, province, and State.</span></li>
+                    <li><strong class="font-semibold" data-en="(4) Place:" data-es="(4) Lugar:">(4) Place:</strong> <span data-en="Indicate locality, district, province, and State." data-es="Indicar localidad, distrito, provincia y Estado.">Indicate locality, district, provincia y Estado.</span></li>
                     <li><strong class="font-semibold" data-en="(5) Parent Data:" data-es="(5) Datos de los Padres:">(5) Parent Data:</strong> <span data-en="In the case of non-marital filiation, the progenitor requesting the registration shall not state the name of the other progenitor, unless the filiation has already been established with respect to the latter, in which case it must be documented. In the case of unknown filiation, the names of the father and mother will be stated for identification purposes only." data-es="En caso de tratarse de filiación no matrimonial, el progenitor que solicite la inscripción no manifestará el nombre del otro progenitor, a no ser que la filiación ya estuviera establecida respecto de éste, en cuyo caso deberá ser acreditada documentalmente. En el supuesto de filiación desconocida se harán constar nombres de padre y madre a los solos efectos identificadores.">In the case of non-marital filiation, the progenitor requesting the registration shall not state the name of the other progenitor, unless the filiation has already been established with respect to the latter, in which case it must be documented. In the case of unknown filiation, the names of the father and mother will be stated for identification purposes only.</span></li>
                     <li><strong class="font-semibold" data-en="(6) Parents' Marriage:" data-es="(6) Matrimonio de los Padres:">(6) Parents' Marriage:</strong> <span data-en="Indicate &quot;Exists&quot; or &quot;Does Not Exist&quot; if parents were married." data-es="Indicar «Existe» o «No Existe».">Indicate "Exists" or "Does Not Exist" if parents were married.</span></li>
                     <li><strong class="font-semibold" data-en="(7) Observations:" data-es="(7) Observaciones:">(7) Observations:</strong> <span data-en="In case of multiple birth, the order of birth will be stated here." data-es="En caso de parto múltiple se consignará el orden de nacimiento.">In case of multiple birth, the order of birth will be stated here.</span></li>
@@ -569,13 +564,11 @@
             </div>
         </section>
 
-        <!-- Language Toggle Buttons -->
         <div class="language-buttons-container">
-            <button class="language-button" onclick="toggleLanguage('es')">Change back to Spanish (before exporting)</button>
-            <button class="language-button" onclick="toggleLanguage('en')">Translate in English</button>
+            <button class="language-button" onclick="toggleLanguage('es')">Traducir al Español</button>
+            <button class="language-button" onclick="toggleLanguage('en')">Revertir al Inglés</button>
         </div>
 
-        <!-- Export Buttons -->
         <div class="export-buttons-container">
             <button class="export-button" onclick="exportFormAsPdf()">Export Form as PDF (Image-based)</button>
             <button class="export-button" onclick="exportFormAsText()">Export Data as Text</button>
@@ -708,11 +701,13 @@
             elementsToTranslate.forEach(el => {
                 // Handle text content
                 if (el.hasAttribute(`data-${lang}`)) {
-                    // Check if the current content is not already the target language
-                    // This prevents re-setting text if it's already translated, which can cause issues with dynamically replaced content
+                    // Only update textContent if it's different to prevent unnecessary DOM changes
                     if (el.textContent.trim() !== el.getAttribute(`data-${lang}`).trim()) {
-                         // For elements that are not input fields, update textContent/innerHTML
-                        if (!el.tagName.includes('INPUT') && !el.tagName.includes('TEXTAREA') && !el.tagName.includes('SELECT')) {
+                         // For elements that are not input fields, or part of the radio label span
+                        if (!el.tagName.includes('INPUT') && !el.tagName.includes('TEXTAREA') && !el.tagName.includes('SELECT') && el.tagName !== 'SPAN') {
+                            el.textContent = el.getAttribute(`data-${lang}`);
+                        } else if (el.tagName === 'SPAN' && el.closest('.radio-group')) {
+                            // Handle spans within radio labels specifically
                             el.textContent = el.getAttribute(`data-${lang}`);
                         }
                     }
@@ -811,8 +806,9 @@
                     tempSpan.classList.add('pdf-temp-content');
 
                     if (group.selected) {
-                        const originalRadioLabelText = radioGroupContainer.querySelector(`label input[name="${groupName}"][value="${group.selected.value}"] span`).getAttribute('data-es');
-                        tempSpan.textContent = originalRadioLabelText;
+                        const originalRadioLabelSpan = radioGroupContainer.querySelector(`label input[name="${groupName}"][value="${group.selected.value}"] span`);
+                        const spanishRadioValue = originalRadioLabelSpan ? originalRadioLabelSpan.getAttribute('data-es') : group.selected.value;
+                        tempSpan.textContent = spanishRadioValue;
                     } else {
                         tempSpan.textContent = ' ';
                     }
@@ -827,15 +823,18 @@
 
             // 4. Temporarily hide the export/language buttons container
             const buttonsContainer = document.querySelector('.export-buttons-container');
-            const langButtonsContainer = document.querySelector('.language-buttons-container');
+            const langButtonsContainers = document.querySelectorAll('.language-buttons-container'); // Select all instances
+            
             if (buttonsContainer) {
                 originalElements.push({ element: buttonsContainer, type: 'button-container', display: buttonsContainer.style.display });
                 buttonsContainer.classList.add('hide-for-pdf');
             }
-            if (langButtonsContainer) {
-                originalElements.push({ element: langButtonsContainer, type: 'button-container', display: langButtonsContainer.style.display });
-                langButtonsContainer.classList.add('hide-for-pdf');
-            }
+            langButtonsContainers.forEach(container => {
+                if (container) {
+                    originalElements.push({ element: container, type: 'button-container', display: container.style.display });
+                    container.classList.add('hide-for-pdf');
+                }
+            });
 
 
             // Execute the callback function (e.g., PDF generation)
@@ -860,6 +859,7 @@
             // Reapply the language that was active before export
             toggleLanguage(currentDisplayLanguage);
         }
+
 
         /**
          * @function exportFormAsPdf
@@ -921,115 +921,123 @@
             // This is done implicitly within prepareFormForExport
             prepareFormForExport(() => {
                 let formData = '';
-                const processedRadioGroups = new Set();
+                const formContainer = document.getElementById('formContainer');
+                const processedRadioGroups = new Set(); // To prevent duplicate processing of radio groups
 
-                // Get the main form elements
-                const headers = document.querySelectorAll('h1, h2, h3');
-                headers.forEach(header => {
-                    formData += `${header.textContent.trim()}\n`;
-                });
+                // --- Header Section ---
+                // These are already in Spanish from prepareFormForExport
+                formData += formContainer.querySelector('h1[data-es]').textContent.trim() + '\n';
+                formData += formContainer.querySelector('h2[data-es]').textContent.trim() + '\n';
+                formData += formContainer.querySelector('h3[data-es]').textContent.trim() + '\n\n';
+                formData += formContainer.querySelector('section:nth-of-type(2) p:nth-of-type(1)[data-es]').textContent.trim() + '\n';
+                formData += formContainer.querySelector('section:nth-of-type(2) p:nth-of-type(2)[data-es]').textContent.trim() + '\n';
+                formData += formContainer.querySelector('section:nth-of-type(2) p:nth-of-type(3)[data-es]').textContent.trim() + '\n\n';
 
-                const topParagraphs = document.querySelectorAll('section:nth-child(2) p');
-                topParagraphs.forEach(p => {
-                    formData += `${p.textContent.trim()}\n`;
-                });
 
-                const sections = document.querySelectorAll('.form-container > section'); // Get all main sections
+                // --- Iterate through form sections and fields ---
+                // Assign IDs to sections to target them easily for TXT export, e.g., <section id="birth-data-section">
+                // Assuming sections are ordered as per previous HTML structure.
+                const sectionsToProcess = [
+                    { selector: 'section:nth-of-type(3)', titleKey: 'BIRTH DATA' }, // Birth Data Section
+                    { selector: 'section:nth-of-type(4)', titleKey: 'FATHER\'S DATA (5)' }, // Father's Data Section
+                    { selector: 'section:nth-of-type(5)', titleKey: 'MOTHER\'S DATA (5)' }, // Mother's Data Section
+                    { selector: 'section:nth-of-type(7)', titleKey: 'PARENTS\' MARRIAGE (6)' }, // Parents' Marriage Section
+                    { selector: 'section:nth-of-type(8)', titleKey: 'OBSERVATIONS (7)' }, // Observations Section
+                    { selector: 'section:nth-of-type(9)', titleKey: 'DECLARANT (8)' }, // Declarant Section
+                    { selector: 'section:nth-of-type(10)', titleKey: 'INSTRUCTIONS' } // Instructions Section
+                ];
 
-                sections.forEach(section => {
-                    const sectionHeaderElement = section.querySelector('.subsection-title');
+                sectionsToProcess.forEach(sectionInfo => {
+                    const sectionElement = document.querySelector(sectionInfo.selector);
+                    if (!sectionElement) return;
+
                     let sectionTitle = '';
-                    if (sectionHeaderElement) {
-                        sectionTitle = sectionHeaderElement.textContent.trim(); // Already in Spanish due to prepareFormForExport
-                    } else if (section.classList.contains('instruction-section')) {
-                        sectionTitle = document.querySelector('.instruction-section .section-title').textContent.trim(); // Already in Spanish
+                    if (sectionInfo.titleKey === 'INSTRUCTIONS') {
+                         sectionTitle = sectionElement.querySelector('.section-title[data-es]').textContent.trim();
+                    } else {
+                        const subsectionTitleEl = sectionElement.querySelector('.subsection-title');
+                        if (subsectionTitleEl && subsectionTitleEl.hasAttribute('data-es')) {
+                            sectionTitle = subsectionTitleEl.getAttribute('data-es');
+                        } else if (labelTranslations[sectionInfo.titleKey]) {
+                            sectionTitle = labelTranslations[sectionInfo.titleKey];
+                        }
                     }
 
                     if (sectionTitle) {
-                        formData += `\n--- ${sectionTitle} ---\n`;
+                        formData += `--- ${sectionTitle} ---\n`;
                     }
 
                     // Special handling for the instructions section
-                    if (section.classList.contains('instruction-section')) {
-                        const notes = section.querySelector('.notes');
+                    if (sectionInfo.titleKey === 'INSTRUCTIONS') {
+                        const notes = sectionElement.querySelector('.notes');
                         if (notes) {
-                            // Capture all relevant text from the notes block, already in Spanish
-                            notes.querySelectorAll('p, li, strong').forEach(el => {
-                                formData += el.textContent.trim() + '\n';
+                            notes.querySelectorAll('p[data-es], li strong[data-es], li span[data-es]').forEach(el => {
+                                if (el.tagName === 'STRONG' && el.hasAttribute('data-es')) { // For bolded part of list item
+                                    formData += el.getAttribute('data-es').trim();
+                                } else if (el.tagName === 'SPAN' && el.hasAttribute('data-es')) { // For spanned part of list item
+                                    formData += el.getAttribute('data-es').trim() + '\n';
+                                } else if (el.tagName === 'P' && el.hasAttribute('data-es')) { // For general paragraphs
+                                    formData += el.getAttribute('data-es').trim() + '\n';
+                                }
                             });
                         }
+                        formData += '\n';
                         return; // Skip input processing for instructions section
                     }
 
                     // Process input fields within the section
-                    section.querySelectorAll('label, input, textarea, select').forEach(element => {
-                        // Skip if it's an actual input/select/textarea element that was hidden for PDF display
-                        if (element.classList.contains('hide-for-pdf')) {
-                            return;
-                        }
+                    sectionElement.querySelectorAll('input, select, textarea').forEach(input => {
+                        let fieldLabel = '';
+                        let fieldValue = '';
+                        const inputId = input.id || input.name;
 
-                        // Get the label text - it's already in Spanish because of prepareFormForExport
-                        let labelText = '';
-                        if (element.tagName === 'LABEL') {
-                            labelText = element.textContent.trim();
+                        // Get the Spanish label from the labelTranslations map
+                        if (labelTranslations[inputId] && typeof labelTranslations[inputId] === 'string') {
+                            fieldLabel = labelTranslations[inputId];
                         } else {
-                            // For inputs, etc., find the associated label
-                            const labelEl = element.previousElementSibling;
-                            if (labelEl && labelEl.tagName === 'LABEL') {
-                                labelText = labelEl.textContent.trim();
+                            // Fallback to the data-es attribute of the associated label or the input's data-es attribute
+                            const labelEl = document.querySelector(`label[for="${inputId}"]`);
+                            if (labelEl && labelEl.hasAttribute('data-es')) {
+                                fieldLabel = labelEl.getAttribute('data-es');
+                            } else if (input.hasAttribute('data-es-placeholder')) {
+                                // For inputs that primarily use placeholder as a label, e.g., signature place
+                                fieldLabel = input.getAttribute('data-es-placeholder');
                             } else {
-                                // Fallback for elements without direct preceding label (e.g., radio group span)
-                                labelText = element.getAttribute('id') || element.getAttribute('name') || '';
+                                fieldLabel = inputId; // Use the ID/Name as a last resort
                             }
                         }
 
-                        let value = '';
-
-                        // Handle the *temporary span* content for input fields which replaced the actual inputs
-                        if (element.classList.contains('pdf-temp-content')) {
-                            value = element.textContent.trim();
-                            formData += `${labelText}: ${value}\n`;
-                            return;
-                        }
-
-                        // Special handling for radio button groups if not already processed by the temp-span logic
-                        // This block should ideally not be hit if pdf-temp-content handling is robust
-                        if (element.type === 'radio') {
-                             if (processedRadioGroups.has(element.name)) {
+                        if (input.type === 'radio') {
+                            if (processedRadioGroups.has(input.name)) {
                                 return;
                             }
-                            const selectedRadio = document.querySelector(`input[name="${element.name}"]:checked`);
+                            const selectedRadio = document.querySelector(`input[name="${input.name}"]:checked`);
                             if (selectedRadio) {
-                                // Find the Spanish text for the selected radio option
-                                const selectedSpan = selectedRadio.nextElementSibling; // Assuming span is right after radio
-                                value = selectedSpan ? selectedSpan.getAttribute('data-es') : selectedRadio.value;
-                                formData += `${labelText}: ${value}\n`;
+                                // Get the Spanish translation for the selected radio option value from data-es on its span
+                                const spanEl = selectedRadio.nextElementSibling;
+                                fieldValue = spanEl ? spanEl.getAttribute('data-es') : selectedRadio.value;
                             } else {
-                                formData += `${labelText}: (No seleccionado)\n`;
+                                fieldValue = '(No seleccionado)';
                             }
-                            processedRadioGroups.add(element.name);
-                            return;
+                            // Use the group_label from labelTranslations for radio groups
+                            fieldLabel = labelTranslations[input.name] && labelTranslations[input.name].group_label ? labelTranslations[input.name].group_label : fieldLabel;
+                            processedRadioGroups.add(input.name); // Mark group as processed
+
+                        } else if (input.tagName === 'SELECT') {
+                            fieldValue = input.options[input.selectedIndex].text;
+                        } else {
+                            fieldValue = input.value;
                         }
 
-                        // If it's a regular input/textarea/select that wasn't hidden by temp-span logic
-                        if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA' || element.tagName === 'SELECT') {
-                            if (element.tagName === 'SELECT') {
-                                value = element.options[element.selectedIndex].text;
-                            } else {
-                                value = element.value;
-                            }
-                            // Only append if it's not a radio input already handled
-                            if (!element.type.includes('radio')) {
-                                formData += `${labelText}: ${value}\n`;
-                            }
-                        }
+                        formData += `${fieldLabel}: ${fieldValue}\n`;
                     });
+                    formData += '\n'; // Add a newline after each group of fields
                 });
 
-                // Add footer text
+                // --- Footer ---
                 const footerEl = document.querySelector('.form-footer');
-                if (footerEl) {
-                    formData += `\n${footerEl.textContent.trim()}\n`; // Already in Spanish
+                if (footerEl && footerEl.hasAttribute('data-es')) {
+                    formData += `${footerEl.getAttribute('data-es').trim()}\n\n`;
                 }
 
                 const blob = new Blob([formData], { type: 'text/plain;charset=utf-8' });
@@ -1045,4 +1053,3 @@
     </script>
 </body>
 </html>
-
