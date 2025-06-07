@@ -188,7 +188,21 @@
         }
         /* Style for temporary content visibility during PDF generation */
         .pdf-temp-content {
-            display: none; /* Hide temporary elements from view */
+            display: inline-block; /* Make it inline-block to preserve flow */
+            padding: 0.75rem; /* Match input padding */
+            font-size: 1rem; /* Match input font size */
+            color: #1f2937; /* Match input text color */
+            min-height: 2.75rem; /* Ensure consistent height with inputs */
+            box-sizing: border-box; /* Include padding in width */
+            border: 1px solid #cbd5e1; /* Match input border */
+            border-radius: 0.375rem; /* Match input border-radius */
+            background-color: #f8fafc; /* Slightly different background to indicate it's text */
+            vertical-align: middle; /* Align with surrounding text/labels */
+            width: 100%; /* Ensure it takes full width of parent */
+        }
+        /* Hide original inputs during PDF generation */
+        .hide-for-pdf {
+            display: none !important;
         }
     </style>
     <!-- jsPDF and html2canvas libraries for PDF export -->
@@ -227,7 +241,7 @@
                 </div>
                 <div class="form-group">
                     <label for="born-sex">Sex</label>
-                    <div class="radio-group">
+                    <div class="radio-group" id="born-sex-radio-group">
                         <label><input type="radio" name="bornSex" value="male"> Male</label>
                         <label><input type="radio" name="bornSex" value="female"> Female</label>
                         <label><input type="radio" name="bornSex" value="other"> Other</label>
@@ -527,46 +541,79 @@
             // Temporarily hide the export button to prevent it from appearing in the PDF
             const exportButton = document.querySelector('.export-button');
             if (exportButton) {
-                exportButton.style.display = 'none';
+                exportButton.classList.add('hide-for-pdf'); // Use class for hiding
             }
 
-            // Temporarily replace input fields with their values for PDF rendering
-            const inputs = formContainer.querySelectorAll('input, select, textarea');
-            const originalContents = {}; // Store original content to restore later
+            // Store original elements and their display states to restore later
+            const originalElements = [];
+            const tempElements = [];
 
-            inputs.forEach((input, index) => {
+            // Temporarily replace input fields with their values for PDF rendering
+            const inputs = formContainer.querySelectorAll('input:not([type="radio"]), select, textarea');
+            const radioGroups = {}; // To manage radio button sets
+
+            inputs.forEach(input => {
                 const tempSpan = document.createElement('span');
-                tempSpan.className = 'pdf-temp-content'; // Apply a class to easily hide/show
+                tempSpan.classList.add('pdf-temp-content');
                 let displayValue = '';
 
-                if (input.type === 'radio') {
-                    // For radio buttons, display checked value if applicable
-                    if (input.checked) {
-                        displayValue = input.nextSibling && input.nextSibling.nodeType === 3 ? input.nextSibling.textContent.trim() : input.value;
-                        tempSpan.textContent = `[${input.name.replace(/([A-Z])/g, ' $1').trim()}: ${displayValue}]`;
-                        input.style.display = 'none'; // Hide the actual radio input
-                        input.parentNode.insertBefore(tempSpan, input.nextSibling); // Insert after the label text
-                    } else {
-                        // If not checked, hide the radio button and its label
-                        input.style.display = 'none';
-                        if (input.parentNode.tagName === 'LABEL') {
-                            input.parentNode.style.display = 'none';
-                        }
-                    }
-                } else if (input.tagName === 'SELECT') {
+                if (input.tagName === 'SELECT') {
                     displayValue = input.options[input.selectedIndex].text;
-                    originalContents[index] = { element: input, type: 'select', value: input.value };
-                    input.style.display = 'none';
-                    tempSpan.textContent = displayValue;
-                    input.parentNode.appendChild(tempSpan);
                 } else {
                     displayValue = input.value;
-                    originalContents[index] = { element: input, type: 'input', value: input.value };
-                    input.style.display = 'none'; // Hide the input field
-                    tempSpan.textContent = displayValue; // Display its value as text
-                    input.parentNode.appendChild(tempSpan);
+                }
+
+                tempSpan.textContent = displayValue === '' ? ' ' : displayValue; // Use space for empty to preserve layout
+                input.parentNode.insertBefore(tempSpan, input.nextSibling); // Insert after the input
+                tempElements.push(tempSpan); // Keep track of temp spans
+
+                originalElements.push({ element: input, display: input.style.display });
+                input.classList.add('hide-for-pdf'); // Hide the actual input
+            });
+
+            // Handle radio buttons separately
+            formContainer.querySelectorAll('input[type="radio"]').forEach(radio => {
+                const groupName = radio.name;
+                if (!radioGroups[groupName]) {
+                    radioGroups[groupName] = {
+                        selected: null,
+                        allInputs: [],
+                        tempSpan: null // To hold the single temp span for the group
+                    };
+                }
+                radioGroups[groupName].allInputs.push(radio);
+
+                if (radio.checked) {
+                    radioGroups[groupName].selected = radio;
                 }
             });
+
+            for (const groupName in radioGroups) {
+                const group = radioGroups[groupName];
+                if (group.selected) {
+                    const tempSpan = document.createElement('span');
+                    tempSpan.classList.add('pdf-temp-content');
+                    // Get the text from the label associated with the checked radio button
+                    const label = document.querySelector(`label input[name="${groupName}"][value="${group.selected.value}"]`).textContent.trim();
+                    tempSpan.textContent = label;
+                    // Find a suitable place to insert the temp span, e.g., after the radio group container
+                    const radioGroupContainer = document.getElementById(groupName + '-radio-group'); // Assuming unique IDs like "born-sex-radio-group"
+                    if (radioGroupContainer) {
+                        radioGroupContainer.parentNode.insertBefore(tempSpan, radioGroupContainer.nextSibling);
+                        tempElements.push(tempSpan);
+                    }
+                }
+                // Hide all radio buttons and their labels within this group
+                group.allInputs.forEach(radio => {
+                    originalElements.push({ element: radio, display: radio.style.display });
+                    radio.classList.add('hide-for-pdf');
+                    // Also hide the associated label element if it's a direct parent
+                    if (radio.parentNode.tagName === 'LABEL') {
+                        originalElements.push({ element: radio.parentNode, display: radio.parentNode.style.display });
+                        radio.parentNode.classList.add('hide-for-pdf');
+                    }
+                });
+            }
 
 
             // Generate canvas from the form container
@@ -597,7 +644,7 @@
                 heightLeft -= pageHeight;
 
                 while (heightLeft >= 0) {
-                    position = heightLeft - imgHeight;
+                    position = heightLeft - pageHeight; // Correctly calculate position for next page
                     pdf.addPage();
                     pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
                     heightLeft -= pageHeight;
@@ -610,29 +657,23 @@
                 // In a real application, you might show a user-friendly message here.
             } finally {
                 // Restore original input fields and hide temporary content
-                inputs.forEach((input, index) => {
-                    if (input.type === 'radio') {
-                         input.style.display = ''; // Show radio input
-                         if (input.parentNode.tagName === 'LABEL') {
-                             input.parentNode.style.display = ''; // Show parent label if hidden
-                         }
-                    } else if (originalContents[index]) {
-                        originalContents[index].element.style.display = ''; // Show original input
-                    }
+                originalElements.forEach(item => {
+                    item.element.classList.remove('hide-for-pdf'); // Remove hide class
+                    item.element.style.display = item.display; // Restore original display property
                 });
 
                 // Remove all temporary spans
-                const tempSpans = formContainer.querySelectorAll('.pdf-temp-content');
-                tempSpans.forEach(span => span.remove());
+                tempElements.forEach(span => span.remove());
 
 
                 // Restore the export button
                 if (exportButton) {
-                    exportButton.style.display = 'block';
+                    exportButton.classList.remove('hide-for-pdf');
                 }
             }
         }
     </script>
 </body>
 </html>
+
 
