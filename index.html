@@ -232,86 +232,86 @@
 <body>
     <div class="form-container" id="formContainer">
         <header class="text-center mb-6">
-            <h1 class="text-lg font-bold text-gray-800">SERVICIO CONSULAR DE ESPAÑA</h1>
-            <h2 class="text-xl font-extrabold text-blue-700 mt-2">REGISTRO CIVIL CONSULAR DE ESPAÑA EN</h2>
-            <h3 class="text-3xl font-black text-gray-900 mt-4">REGISTRO CIVIL</h3>
+            <h1 class="text-lg font-bold text-gray-800">SPANISH CONSULAR SERVICE</h1>
+            <h2 class="text-xl font-extrabold text-blue-700 mt-2">CONSULAR CIVIL REGISTRY OF SPAIN IN</h2>
+            <h3 class="text-3xl font-black text-gray-900 mt-4">CIVIL REGISTRY</h3>
         </header>
 
         <section class="mb-8">
-            <p class="text-lg font-semibold text-center mb-4">Sección I. NACIMIENTOS</p>
-            <p class="text-xl font-bold text-center text-blue-600">(Declaración de datos para la inscripción)</p>
-            <p class="text-sm italic text-center mt-4 text-red-600">Nota importante: Antes de cumplimentar ver instrucciones al dorso.</p>
+            <p class="text-lg font-semibold text-center mb-4">Section I. BIRTHS</p>
+            <p class="text-xl font-bold text-center text-blue-600">(Declaration of data for registration)</p>
+            <p class="text-sm italic text-center mt-4 text-red-600">Important note: Before filling out, see instructions on the back (below).</p>
         </section>
 
         <!-- BIRTH DATA SECTION -->
         <section>
-            <div class="subsection-title">DATOS DEL NACIDO</div>
+            <div class="subsection-title">BIRTH DATA</div>
             <div class="grid-layout">
                 <div class="form-group">
-                    <label for="born-name">Nombre (1)</label>
-                    <input type="text" id="born-name" name="bornName" placeholder="Primer(os) Nombre(s)">
+                    <label for="born-name">Name (1)</label>
+                    <input type="text" id="born-name" name="bornName" placeholder="First Name(s)">
                 </div>
                 <div class="form-group">
-                    <label for="born-first-surname">Primer Apellido</label>
-                    <input type="text" id="born-first-surname" name="bornFirstSurname" placeholder="Apellido del padre o primer apellido">
+                    <label for="born-first-surname">First Surname</label>
+                    <input type="text" id="born-first-surname" name="bornFirstSurname" placeholder="Father's or first surname">
                 </div>
                 <div class="form-group">
-                    <label for="born-second-surname">Segundo Apellido (2)</label>
-                    <input type="text" id="born-second-surname" name="bornSecondSurname" placeholder="Apellido de la madre o segundo apellido">
+                    <label for="born-second-surname">Second Surname (2)</label>
+                    <input type="text" id="born-second-surname" name="bornSecondSurname" placeholder="Mother's or second surname">
                 </div>
                 <div class="form-group">
-                    <label for="born-sex">Sexo</label>
+                    <label for="born-sex">Sex</label>
                     <div class="radio-group" id="born-sex-radio-group">
-                        <label><input type="radio" name="bornSex" value="male"> Masculino</label>
-                        <label><input type="radio" name="bornSex" value="female"> Femenino</label>
-                        <label><input type="radio" name="bornSex" value="other"> Otro</label>
+                        <label><input type="radio" name="bornSex" value="male"> Male</label>
+                        <label><input type="radio" name="bornSex" value="female"> Female</label>
+                        <label><input type="radio" name="bornSex" value="other"> Other</label>
                     </div>
                 </div>
             </div>
 
-            <div class="subsection-title">DATOS DEL NACIMIENTO</div>
+            <div class="subsection-title">BIRTH DETAILS</div>
             <div class="grid-layout three-cols">
                 <div class="form-group">
-                    <label for="birth-hour">Hora</label>
+                    <label for="birth-hour">Hour</label>
                     <input type="time" id="birth-hour" name="birthHour">
                 </div>
                 <div class="form-group">
-                    <label for="birth-day">Día (3)</label>
-                    <input type="text" id="birth-day" name="birthDay" placeholder="Ej: 'Séptimo'">
+                    <label for="birth-day">Day (3)</label>
+                    <input type="text" id="birth-day" name="birthDay" placeholder="e.g., 'Seventh'">
                 </div>
                 <div class="form-group">
-                    <label for="birth-month">Mes</label>
-                    <input type="text" id="birth-month" name="birthMonth" placeholder="Ej: 'Enero'">
+                    <label for="birth-month">Month</label>
+                    <input type="text" id="birth-month" name="birthMonth" placeholder="e.g., 'January'">
                 </div>
                 <div class="form-group full-width-sm three-cols">
-                    <label for="birth-year">Año</label>
-                    <input type="text" id="birth-year" name="birthYear" placeholder="Ej: 'Dos mil veinticuatro'">
+                    <label for="birth-year">Year</label>
+                    <input type="text" id="birth-year" name="birthYear" placeholder="e.g., 'Two thousand and twenty-four'">
                 </div>
                 <div class="form-group full-width-sm three-cols">
-                    <label for="birth-place">Lugar (4)</label>
-                    <input type="text" id="birth-place" name="birthPlace" placeholder="Localidad, Distrito, Provincia, Estado">
+                    <label for="birth-place">Place (4)</label>
+                    <input type="text" id="birth-place" name="birthPlace" placeholder="Locality, District, Province, State">
                 </div>
             </div>
 
             <div class="grid-layout three-cols mt-4">
                 <div class="form-group full-width-sm three-cols">
-                    <label for="registered-date">Inscrito con fecha</label>
+                    <label for="registered-date">Registered on (Date)</label>
                     <input type="date" id="registered-date" name="registeredDate">
                 </div>
                 <div class="form-group full-width-sm three-cols">
-                    <label for="registered-local-registry">En el Registro local de</label>
-                    <input type="text" id="registered-local-registry" name="registeredLocalRegistry" placeholder="Nombre del Registro local">
+                    <label for="registered-local-registry">in the Local Registry of</label>
+                    <input type="text" id="registered-local-registry" name="registeredLocalRegistry" placeholder="Local Registry Name">
                 </div>
                 <div class="form-group">
-                    <label for="registered-volume">En el Tomo</label>
+                    <label for="registered-volume">in Volume</label>
                     <input type="text" id="registered-volume" name="registeredVolume">
                 </div>
                 <div class="form-group">
-                    <label for="registered-page">Página</label>
+                    <label for="registered-page">Page</label>
                     <input type="text" id="registered-page" name="registeredPage">
                 </div>
                 <div class="form-group">
-                    <label for="registered-number">Núm.</label>
+                    <label for="registered-number">No.</label>
                     <input type="text" id="registered-number" name="registeredNumber">
                 </div>
             </div>
@@ -319,54 +319,54 @@
 
         <!-- FATHER'S DATA SECTION -->
         <section>
-            <div class="subsection-title">DATOS DEL PADRE (5)</div>
+            <div class="subsection-title">FATHER'S DATA (5)</div>
             <div class="grid-layout">
                 <div class="form-group">
-                    <label for="father-name">Nombre</label>
+                    <label for="father-name">Name</label>
                     <input type="text" id="father-name" name="fatherName">
                 </div>
                 <div class="form-group">
-                    <label for="father-first-surname">Primer Apellido</label>
+                    <label for="father-first-surname">First Surname</label>
                     <input type="text" id="father-first-surname" name="fatherFirstSurname">
                 </div>
                 <div class="form-group full-width">
-                    <label for="father-second-surname">Segundo Apellido</label>
+                    <label for="father-second-surname">Second Surname</label>
                     <input type="text" id="father-second-surname" name="fatherSecondSurname">
                 </div>
                 <div class="form-group full-width">
-                    <label for="father-parentage">Hijo de</label>
-                    <input type="text" id="father-parentage" name="fatherParentage" placeholder="Nombre de la madre del padre y del padre del padre">
+                    <label for="father-parentage">Son of</label>
+                    <input type="text" id="father-parentage" name="fatherParentage" placeholder="Father's Mother's Name and Mother's Father's Name">
                 </div>
                 <div class="form-group full-width">
-                    <label for="father-born-place">Nacido en</label>
+                    <label for="father-born-place">Born in</label>
                     <input type="text" id="father-born-place" name="fatherBornPlace">
                 </div>
                 <div class="form-group">
-                    <label for="father-born-day">El día</label>
+                    <label for="father-born-day">on the day</label>
                     <input type="date" id="father-born-day" name="fatherBornDay">
                 </div>
                 <div class="form-group full-width">
-                    <label for="father-civil-status-birth">Estado civil al nacer el/la hijo/a</label>
+                    <label for="father-civil-status-birth">Civil status at the birth of the child</label>
                     <input type="text" id="father-civil-status-birth" name="fatherCivilStatusBirth">
                 </div>
                 <div class="form-group full-width">
-                    <label for="father-civil-status-current">Estado civil en el momento actual</label>
+                    <label for="father-civil-status-current">Civil status at present</label>
                     <input type="text" id="father-civil-status-current" name="fatherCivilStatusCurrent">
                 </div>
                 <div class="form-group full-width">
-                    <label for="father-nationality-birth">Nacionalidad al nacer el/la hijo/a</label>
+                    <label for="father-nationality-birth">Nationality at the birth of the child</label>
                     <input type="text" id="father-nationality-birth" name="fatherNationalityBirth">
                 </div>
                 <div class="form-group full-width">
-                    <label for="father-nationality-current">Nacionalidad en el momento actual</label>
+                    <label for="father-nationality-current">Nationality at present</label>
                     <input type="text" id="father-nationality-current" name="fatherNationalityCurrent">
                 </div>
                 <div class="form-group full-width">
-                    <label for="father-address">Domicilio</label>
+                    <label for="father-address">Address</label>
                     <input type="text" id="father-address" name="fatherAddress">
                 </div>
                 <div class="form-group full-width">
-                    <label for="father-dni">D. N. I.</label>
+                    <label for="father-dni">D.N.I. (National Identity Document)</label>
                     <input type="text" id="father-dni" name="fatherDni">
                 </div>
             </div>
@@ -374,54 +374,54 @@
 
         <!-- MOTHER'S DATA SECTION -->
         <section>
-            <div class="subsection-title">DATOS DE LA MADRE (5)</div>
+            <div class="subsection-title">MOTHER'S DATA (5)</div>
             <div class="grid-layout">
                 <div class="form-group">
-                    <label for="mother-name">Nombre</label>
+                    <label for="mother-name">Name</label>
                     <input type="text" id="mother-name" name="motherName">
                 </div>
                 <div class="form-group">
-                    <label for="mother-first-surname">Primer Apellido</label>
+                    <label for="mother-first-surname">First Surname</label>
                     <input type="text" id="mother-first-surname" name="motherFirstSurname">
                 </div>
                 <div class="form-group full-width">
-                    <label for="mother-second-surname">Segundo Apellido</label>
+                    <label for="mother-second-surname">Second Surname</label>
                     <input type="text" id="mother-second-surname" name="motherSecondSurname">
                 </div>
                 <div class="form-group full-width">
-                    <label for="mother-parentage">Hija de</label>
-                    <input type="text" id="mother-parentage" name="motherParentage" placeholder="Nombre de la madre de la madre y del padre de la madre">
+                    <label for="mother-parentage">Daughter of</label>
+                    <input type="text" id="mother-parentage" name="motherParentage" placeholder="Mother's Mother's Name and Mother's Father's Name">
                 </div>
                 <div class="form-group full-width">
-                    <label for="mother-born-place">Nacida en</label>
+                    <label for="mother-born-place">Born in</label>
                     <input type="text" id="mother-born-place" name="motherBornPlace">
                 </div>
                 <div class="form-group">
-                    <label for="mother-born-day">El día</label>
+                    <label for="mother-born-day">on the day</label>
                     <input type="date" id="mother-born-day" name="motherBornDay">
                 </div>
                 <div class="form-group full-width">
-                    <label for="mother-civil-status-birth">Estado civil al nacer el/la hijo/a</label>
+                    <label for="mother-civil-status-birth">Civil status at the birth of the child</label>
                     <input type="text" id="mother-civil-status-birth" name="motherCivilStatusBirth">
                 </div>
                 <div class="form-group full-width">
-                    <label for="mother-civil-status-current">Estado civil en el momento actual</label>
+                    <label for="mother-civil-status-current">Civil status at present</label>
                     <input type="text" id="mother-civil-status-current" name="motherCivilStatusCurrent">
                 </div>
                 <div class="form-group full-width">
-                    <label for="mother-nationality-birth">Nacionalidad al nacer el/la hijo/a</label>
+                    <label for="mother-nationality-birth">Nationality at the birth of the child</label>
                     <input type="text" id="mother-nationality-birth" name="motherNationalityBirth">
                 </div>
                 <div class="form-group full-width">
-                    <label for="mother-nationality-current">Nacionalidad en el momento actual</label>
+                    <label for="mother-nationality-current">Nationality at present</label>
                     <input type="text" id="mother-nationality-current" name="motherNationalityCurrent">
                 </div>
                 <div class="form-group full-width">
-                    <label for="mother-address">Domicilio</label>
+                    <label for="mother-address">Address</label>
                     <input type="text" id="mother-address" name="motherAddress">
                 </div>
                 <div class="form-group full-width">
-                    <label for="mother-dni">D. N. I.</label>
+                    <label for="mother-dni">D.N.I. (National Identity Document)</label>
                     <input type="text" id="mother-dni" name="motherDni">
                 </div>
             </div>
@@ -429,27 +429,27 @@
 
         <!-- PAGE 2 - Continues on back.../ -->
         <div class="form-footer text-right italic mt-8 pb-4 border-b border-gray-300">
-            Sigue al dorso.../
+            Continues on back.../
         </div>
 
         <!-- PARENTS' MARRIAGE SECTION -->
         <section class="mt-8">
-            <div class="subsection-title">MATRIMONIO DE LOS PADRES (6)</div>
+            <div class="subsection-title">PARENTS' MARRIAGE (6)</div>
             <div class="grid-layout">
                 <div class="form-group full-width">
-                    <label for="marriage-date">Día de la celebración</label>
+                    <label for="marriage-date">Day of celebration</label>
                     <input type="date" id="marriage-date" name="marriageDate">
                 </div>
                 <div class="form-group full-width">
-                    <label for="marriage-place">Lugar de celebración</label>
+                    <label for="marriage-place">Place of celebration</label>
                     <input type="text" id="marriage-place" name="marriagePlace">
                 </div>
                 <div class="form-group full-width">
-                    <label for="marriage-registered-in">Inscrito en</label>
+                    <label for="marriage-registered-in">Registered in</label>
                     <input type="text" id="marriage-registered-in" name="marriageRegisteredIn">
                 </div>
                 <div class="form-group full-width">
-                    <label for="marriage-document">Documento acreditativo presentado</label>
+                    <label for="marriage-document">Supporting document presented</label>
                     <input type="text" id="marriage-document" name="marriageDocument">
                 </div>
             </div>
@@ -457,98 +457,98 @@
 
         <!-- OBSERVATIONS SECTION -->
         <section>
-            <div class="subsection-title">OBSERVACIONES (7)</div>
+            <div class="subsection-title">OBSERVATIONS (7)</div>
             <div class="form-group">
-                <textarea id="observations" name="observations" rows="4" class="w-full" placeholder="Escriba aquí cualquier observación relevante."></textarea>
+                <textarea id="observations" name="observations" rows="4" class="w-full" placeholder="Enter any relevant observations here."></textarea>
             </div>
         </section>
 
         <!-- DECLARANT SECTION -->
         <section>
-            <div class="subsection-title">DECLARANTE (8)</div>
+            <div class="subsection-title">DECLARANT (8)</div>
             <div class="form-group">
-                <label for="declarant-name">D./Dª.</label>
+                <label for="declarant-name">Mr./Ms.</label>
                 <input type="text" id="declarant-name" name="declarantName">
             </div>
             <div class="grid-layout">
                 <div class="form-group">
-                    <label for="declarant-capacity">En calidad de</label>
-                    <input type="text" id="declarant-capacity" name="declarantCapacity" placeholder="Ej: Interesado, padre, madre, etc.">
+                    <label for="declarant-capacity">In the capacity of</label>
+                    <input type="text" id="declarant-capacity" name="declarantCapacity" placeholder="e.g., Interested party, father, mother, etc.">
                 </div>
                 <div class="form-group">
-                    <label for="declarant-native">Natural de</label>
+                    <label for="declarant-native">Native of</label>
                     <input type="text" id="declarant-native" name="declarantNative">
                 </div>
                 <div class="form-group">
-                    <label for="declarant-dob">Fecha de nacimiento</label>
+                    <label for="declarant-dob">Date of birth</label>
                     <input type="date" id="declarant-dob" name="declarantDob">
                 </div>
                 <div class="form-group">
-                    <label for="declarant-pob">Lugar de nacimiento</label>
+                    <label for="declarant-pob">Place of birth</label>
                     <input type="text" id="declarant-pob" name="declarantPob">
                 </div>
                 <div class="form-group full-width">
-                    <label for="declarant-address">Domicilio</label>
+                    <label for="declarant-address">Address</label>
                     <input type="text" id="declarant-address" name="declarantAddress">
                 </div>
                 <div class="form-group">
-                    <label for="declarant-phone">Teléfono</label>
+                    <label for="declarant-phone">Telephone</label>
                     <input type="tel" id="declarant-phone" name="declarantPhone">
                 </div>
                 <div class="form-group">
-                    <label for="declarant-cp">C. P.</label>
+                    <label for="declarant-cp">C.P. (Postal Code)</label>
                     <input type="text" id="declarant-cp" name="declarantCp">
                 </div>
                 <div class="form-group full-width">
-                    <label for="declarant-supporting-doc">Documento acreditativo</label>
+                    <label for="declarant-supporting-doc">Supporting document</label>
                     <input type="text" id="declarant-supporting-doc" name="declarantSupportingDoc">
                 </div>
             </div>
 
             <div class="flex flex-col sm:flex-row justify-between items-center mt-6">
                 <div class="form-group mb-4 sm:mb-0 w-full sm:w-1/2">
-                    <label for="declarant-signature-place">En</label>
+                    <label for="declarant-signature-place">In</label>
                     <input type="text" id="declarant-signature-place" name="declarantSignaturePlace">
                 </div>
                 <div class="form-group w-full sm:w-1/2 flex justify-end items-center gap-2">
-                    <label for="declarant-signature-date">A</label>
+                    <label for="declarant-signature-date">on</label>
                     <input type="date" id="declarant-signature-date" name="declarantSignatureDate" class="w-auto">
                 </div>
             </div>
             <div class="form-group mt-4">
-                <label for="declarant-signature">Firma del declarante (9)</label>
+                <label for="declarant-signature">Declarant's signature (9)</label>
                 <div class="signature-box">
-                    <p>Firme aquí</p>
+                    <p>Sign here</p>
                 </div>
             </div>
         </section>
 
         <!-- INSTRUCTIONS SECTION -->
         <section class="instruction-section">
-            <h2 class="section-title">INSTRUCCIONES</h2>
+            <h2 class="section-title">INSTRUCTIONS</h2>
             <div class="notes">
-                <p class="font-semibold text-lg mb-2">Cumplimentar a máquina o a mano con caracteres de imprenta.</p>
+                <p class="font-semibold text-lg mb-2">Fill in by typewriter or by hand in block letters.</p>
                 <ul>
-                    <li><strong class="font-semibold">(1) Nombre:</strong> Unicamente se podrán practicar inscripciones de nacimiento haciendo constar dos nombres simples (p. e., José Luis o uno compuesto, María del Carmen). Los nombres extranjeros que tengan traducción a cualquiera de las lenguas españolas deberán consignarse en la versión que elija quien haya de imponer el nombre (castellana, catalana, vasca, gallega, etc.).</li>
-                    <li><strong class="font-semibold">(2) Apellidos:</strong> Las inscripciones de nacimiento habrán de practicarse haciendo constar dos apellidos, incluso aquellas inscripciones de personas extranjeras que hayan adquirido la nacionalidad española.</li>
-                    <li><strong class="font-semibold">(3) Día:</strong> Consignar el dato en letra.</li>
-                    <li><strong class="font-semibold">(4) Lugar:</strong> Indicar localidad, distrito, provincia y Estado.</li>
-                    <li><strong class="font-semibold">(5) Datos de los Padres:</strong> En caso de tratarse de filiación no matrimonial, el progenitor que solicite la inscripción no manifestará el nombre del otro progenitor, a no ser que la filiación ya estuviera establecida respecto de éste, en cuyo caso deberá ser acreditada documentalmente. En el supuesto de filiación desconocida se harán constar nombres de padre y madre a los solos efectos identificadores.</li>
-                    <li><strong class="font-semibold">(6) Matrimonio de los Padres:</strong> Indicar «Existe» o «No Existe».</li>
-                    <li><strong class="font-semibold">(7) Observaciones:</strong> En caso de parto múltiple se consignará el orden de nacimiento.</li>
-                    <li><strong class="font-semibold">(8) Declarante:</strong> Interesado, padre, madre, etc.</li>
-                    <li><strong class="font-semibold">(9) Firma:</strong> Si no pudiere o no supiere firmar, lo harán a su ruego dos testigos, los cuales harán constar debajo de la firma, en caracteres bien legibles, su nombre, dos apellidos y domicilio.</li>
+                    <li><strong class="font-semibold">(1) Name:</strong> Only birth registrations stating two simple names (e.g., José Luis) or one compound name (e.g., María del Carmen) may be performed. Foreign names with a translation into any Spanish language must be entered in the version chosen by the person who is to impose the name (Castilian, Catalan, Basque, Galician, etc.).</li>
+                    <li><strong class="font-semibold">(2) Surnames:</strong> Birth registrations must be carried out stating two surnames, including those registrations of foreign persons who have acquired Spanish nationality.</li>
+                    <li><strong class="font-semibold">(3) Day:</strong> Enter the data in letters (e.g., 'Seventh').</li>
+                    <li><strong class="font-semibold">(4) Place:</strong> Indicate locality, district, province, and State.</li>
+                    <li><strong class="font-semibold">(5) Parent Data:</strong> In the case of non-marital filiation, the progenitor requesting the registration shall not state the name of the other progenitor, unless the filiation has already been established with respect to the latter, in which case it must be documented. In the case of unknown filiation, the names of the father and mother will be stated for identification purposes only.</li>
+                    <li><strong class="font-semibold">(6) Parents' Marriage:</strong> Indicate "Exists" or "Does Not Exist" if parents were married.</li>
+                    <li><strong class="font-semibold">(7) Observations:</strong> In case of multiple birth, the order of birth will be stated here.</li>
+                    <li><strong class="font-semibold">(8) Declarant:</strong> This refers to the Interested party, father, mother, etc.</li>
+                    <li><strong class="font-semibold">(9) Signature:</strong> If unable or unwilling to sign, two witnesses will do so at their request, who will state their name, two surnames, and address clearly legible below the signature.</li>
                 </ul>
                 <p class="mt-4 font-bold text-sm">
-                    NOTA: Se admite la presentación de títulos para la inscripción por terceras personas. No obstante el Registro Civil no está obligado a mantener correspondencia ni a informar a los mismos, salvo que estuvieran apoderados por escrito. En el supuesto de que se promueva la incoación del expediente, éste sólo puede ser instado por los propios interesados o por abogados o procuradores expresamente apoderados al efecto.
+                    NOTE: The submission of titles for registration by third parties is permitted. However, the Civil Registry is not obliged to maintain correspondence or inform them, unless they are duly authorized in writing. In the event that the initiation of the procedure is promoted, it can only be initiated by the interested parties themselves or by lawyers or attorneys expressly authorized for this purpose.
                 </p>
             </div>
         </section>
 
         <!-- Export Buttons -->
         <div class="export-buttons-container">
-            <button class="export-button" onclick="exportFormAsPdf()">Exportar Formulario como PDF (Imagen)</button>
-            <button class="export-button" onclick="exportFormAsText()">Exportar Datos como Texto</button>
+            <button class="export-button" onclick="exportFormAsPdf()">Export Form as PDF (Image-based)</button>
+            <button class="export-button" onclick="exportFormAsText()">Export Data as Text</button>
         </div>
 
     </div>
@@ -556,14 +556,27 @@
     <script>
         // Define a mapping of English input IDs/names to Spanish labels for text export
         const labelTranslations = {
-            // Birth Data
+            // Section Titles (for TXT export only, as PDF uses visual HTML)
+            'BIRTH DATA (title)': 'DATOS DEL NACIDO',
+            'BIRTH DETAILS (title)': 'DATOS DEL NACIMIENTO',
+            'FATHER\'S DATA (5) (title)': 'DATOS DEL PADRE (5)',
+            'MOTHER\'S DATA (5) (title)': 'DATOS DE LA MADRE (5)',
+            'PARENTS\' MARRIAGE (6) (title)': 'MATRIMONIO DE LOS PADRES (6)',
+            'OBSERVATIONS (7) (title)': 'OBSERVACIONES (7)',
+            'DECLARANT (8) (title)': 'DECLARANTE (8)',
+            'INSTRUCTIONS (title)': 'INSTRUCCIONES',
+            'Continues on back.../ (footer)': 'Sigue al dorso.../',
+
+
+            // Birth Data Fields
             'born-name': 'Nombre (1)',
             'born-first-surname': 'Primer Apellido',
             'born-second-surname': 'Segundo Apellido (2)',
             'bornSex': { // Special handling for radio group names
                 'male': 'Masculino',
                 'female': 'Femenino',
-                'other': 'Otro'
+                'other': 'Otro',
+                'group_label': 'Sexo' // Label for the entire radio group
             },
             'birth-hour': 'Hora',
             'birth-day': 'Día (3)',
@@ -576,83 +589,206 @@
             'registered-page': 'Página',
             'registered-number': 'Núm.',
 
-            // Father's Data
-            'father-name': 'Nombre del Padre',
-            'father-first-surname': 'Primer Apellido del Padre',
-            'father-second-surname': 'Segundo Apellido del Padre',
+            // Father's Data Fields
+            'father-name': 'Nombre',
+            'father-first-surname': 'Primer Apellido',
+            'father-second-surname': 'Segundo Apellido',
             'father-parentage': 'Hijo de',
             'father-born-place': 'Nacido en',
-            'father-born-day': 'El día de nacimiento del Padre',
-            'father-civil-status-birth': 'Estado civil del Padre al nacer el/la hijo/a',
-            'father-civil-status-current': 'Estado civil actual del Padre',
-            'father-nationality-birth': 'Nacionalidad del Padre al nacer el/la hijo/a',
-            'father-nationality-current': 'Nacionalidad actual del Padre',
-            'father-address': 'Domicilio del Padre',
-            'father-dni': 'D. N. I. del Padre',
+            'father-born-day': 'El día',
+            'father-civil-status-birth': 'Estado civil al nacer el/la hijo/a',
+            'father-civil-status-current': 'Estado civil en el momento actual',
+            'father-nationality-birth': 'Nacionalidad al nacer el/la hijo/a',
+            'father-nationality-current': 'Nacionalidad en el momento actual',
+            'father-address': 'Domicilio',
+            'father-dni': 'D. N. I.',
 
-            // Mother's Data
-            'mother-name': 'Nombre de la Madre',
-            'mother-first-surname': 'Primer Apellido de la Madre',
-            'mother-second-surname': 'Segundo Apellido de la Madre',
+            // Mother's Data Fields
+            'mother-name': 'Nombre',
+            'mother-first-surname': 'Primer Apellido',
+            'mother-second-surname': 'Segundo Apellido',
             'mother-parentage': 'Hija de',
             'mother-born-place': 'Nacida en',
-            'mother-born-day': 'El día de nacimiento de la Madre',
-            'mother-civil-status-birth': 'Estado civil de la Madre al nacer el/la hijo/a',
-            'mother-civil-status-current': 'Estado civil actual de la Madre',
-            'mother-nationality-birth': 'Nacionalidad de la Madre al nacer el/la hijo/a',
-            'mother-nationality-current': 'Nacionalidad actual de la Madre',
-            'mother-address': 'Domicilio de la Madre',
-            'mother-dni': 'D. N. I. de la Madre',
+            'mother-born-day': 'El día',
+            'mother-civil-status-birth': 'Estado civil al nacer el/la hijo/a',
+            'mother-civil-status-current': 'Estado civil en el momento actual',
+            'mother-nationality-birth': 'Nacionalidad al nacer el/la hijo/a',
+            'mother-nationality-current': 'Nacionalidad en el momento actual',
+            'mother-address': 'Domicilio',
+            'mother-dni': 'D. N. I.',
 
-            // Parents' Marriage
+            // Parents' Marriage Fields
             'marriage-date': 'Día de la celebración',
             'marriage-place': 'Lugar de celebración',
             'marriage-registered-in': 'Inscrito en',
             'marriage-document': 'Documento acreditativo presentado',
 
-            // Observations
+            // Observations Field
             'observations': 'OBSERVACIONES',
 
-            // Declarant
+            // Declarant Fields
             'declarant-name': 'D./Dª.',
             'declarant-capacity': 'En calidad de',
             'declarant-native': 'Natural de',
-            'declarant-dob': 'Fecha de nacimiento del declarante',
-            'declarant-pob': 'Lugar de nacimiento del declarante',
-            'declarant-address': 'Domicilio del declarante',
-            'declarant-phone': 'Teléfono del declarante',
-            'declarant-cp': 'C. P. del declarante',
-            'declarant-supporting-doc': 'Documento acreditativo del declarante',
-            'declarant-signature-place': 'Lugar de la firma',
-            'declarant-signature-date': 'Fecha de la firma',
+            'declarant-dob': 'Fecha de nacimiento',
+            'declarant-pob': 'Lugar de nacimiento',
+            'declarant-address': 'Domicilio',
+            'declarant-phone': 'Teléfono',
+            'declarant-cp': 'C. P.',
+            'declarant-supporting-doc': 'Documento acreditativo',
+            'declarant-signature-place': 'En',
+            'declarant-signature-date': 'A',
             'declarant-signature': 'Firma del declarante (9)'
         };
 
+        // Static Spanish texts for the PDF image export to replace English labels
+        // These are used to temporarily change visible labels to Spanish before PDF capture
+        const spanishStaticTexts = {
+            'SPANISH CONSULAR SERVICE': 'SERVICIO CONSULAR DE ESPAÑA',
+            'CONSULAR CIVIL REGISTRY OF SPAIN IN': 'REGISTRO CIVIL CONSULAR DE ESPAÑA EN',
+            'CIVIL REGISTRY': 'REGISTRO CIVIL',
+            'Section I. BIRTHS': 'Sección I. NACIMIENTOS',
+            '(Declaration of data for registration)': '(Declaración de datos para la inscripción)',
+            'Important note: Before filling out, see instructions on the back (below).': 'Nota importante: Antes de cumplimentar ver instrucciones al dorso.',
+            'BIRTH DATA': 'DATOS DEL NACIDO',
+            'Name (1)': 'Nombre (1)',
+            'First Surname': 'Primer Apellido',
+            'Second Surname (2)': 'Segundo Apellido (2)',
+            'Sex': 'Sexo',
+            'Male': 'Masculino',
+            'Female': 'Femenino',
+            'Other': 'Otro',
+            'BIRTH DETAILS': 'DATOS DEL NACIMIENTO',
+            'Hour': 'Hora',
+            'Day (3)': 'Día (3)',
+            'Month': 'Mes',
+            'Year': 'Año',
+            'Place (4)': 'Lugar (4)',
+            'Registered on (Date)': 'Inscrito con fecha',
+            'in the Local Registry of': 'En el Registro local de',
+            'in Volume': 'En el Tomo',
+            'Page': 'Página',
+            'No.': 'Núm.',
+            'FATHER\'S DATA (5)': 'DATOS DEL PADRE (5)',
+            'Name (father)': 'Nombre', // Specific for father's name to avoid conflict
+            'First Surname (father)': 'Primer Apellido',
+            'Second Surname (father)': 'Segundo Apellido',
+            'Son of': 'Hijo de',
+            'Born in (father)': 'Nacido en',
+            'on the day (father)': 'El día',
+            'Civil status at the birth of the child (father)': 'Estado civil al nacer el/la hijo/a',
+            'Civil status at present (father)': 'Estado civil en el momento actual',
+            'Nationality at the birth of the child (father)': 'Nacionalidad al nacer el/la hijo/a',
+            'Nationality at present (father)': 'Nacionalidad en el momento actual',
+            'Address (father)': 'Domicilio',
+            'D.N.I. (National Identity Document) (father)': 'D. N. I.',
+            'MOTHER\'S DATA (5)': 'DATOS DE LA MADRE (5)',
+            'Name (mother)': 'Nombre', // Specific for mother's name to avoid conflict
+            'First Surname (mother)': 'Primer Apellido',
+            'Second Surname (mother)': 'Segundo Apellido',
+            'Daughter of': 'Hija de',
+            'Born in (mother)': 'Nacida en',
+            'on the day (mother)': 'El día',
+            'Civil status at the birth of the child (mother)': 'Estado civil al nacer el/la hijo/a',
+            'Civil status at present (mother)': 'Estado civil en el momento actual',
+            'Nationality at the birth of the child (mother)': 'Nacionalidad al nacer el/la hijo/a',
+            'Nationality at present (mother)': 'Nacionalidad en el momento actual',
+            'Address (mother)': 'Domicilio',
+            'D.N.I. (National Identity Document) (mother)': 'D. N. I.',
+            'Continues on back.../': 'Sigue al dorso.../',
+            'PARENTS\' MARRIAGE (6)': 'MATRIMONIO DE LOS PADRES (6)',
+            'Day of celebration': 'Día de la celebración',
+            'Place of celebration': 'Lugar de celebración',
+            'Registered in': 'Inscrito en',
+            'Supporting document presented': 'Documento acreditativo presentado',
+            'OBSERVATIONS (7)': 'OBSERVACIONES (7)',
+            'DECLARANT (8)': 'DECLARANTE (8)',
+            'Mr./Ms.': 'D./Dª.',
+            'In the capacity of': 'En calidad de',
+            'Native of': 'Natural de',
+            'Date of birth': 'Fecha de nacimiento',
+            'Place of birth': 'Lugar de nacimiento',
+            'Address': 'Domicilio',
+            'Telephone': 'Teléfono',
+            'C.P. (Postal Code)': 'C. P.',
+            'Supporting document': 'Documento acreditativo',
+            'In': 'En',
+            'on': 'A', // For 'on [date]'
+            'Declarant\'s signature (9)': 'Firma del declarante (9)',
+            'Sign here': 'Firme aquí',
+            'INSTRUCTIONS': 'INSTRUCCIONES',
+            'Fill in by typewriter or by hand in block letters.': 'Cumplimentar a máquina o a mano con caracteres de imprenta.',
+            '(1) Name:': '(1) Nombre:',
+            'Only birth registrations stating two simple names (e.g., José Luis) or one compound name (e.g., María del Carmen) may be performed. Foreign names with a translation into any Spanish language must be entered in the version chosen by the person who is to impose the name (Castilian, Catalan, Basque, Galician, etc.).': 'Unicamente se podrán practicar inscripciones de nacimiento haciendo constar dos nombres simples (p. e., José Luis o uno compuesto, María del Carmen). Los nombres extranjeros que tengan traducción a cualquiera de las lenguas españolas deberán consignarse en la versión que elija quien haya de imponer el nombre (castellana, catalana, vasca, gallega, etc.).',
+            '(2) Surnames:': '(2) Apellidos:',
+            'Birth registrations must be carried out stating two surnames, including those registrations of foreign persons who have acquired Spanish nationality.': 'Las inscripciones de nacimiento habrán de practicarse haciendo constar dos apellidos, incluso aquellas inscripciones de personas extranjeras que hayan adquirido la nacionalidad española.',
+            '(3) Day:': '(3) Día:',
+            'Enter the data in letters (e.g., \'Seventh\').': 'Consignar el dato en letra.',
+            '(4) Place:': '(4) Lugar:',
+            'Indicate locality, district, province, and State.': 'Indicar localidad, distrito, provincia y Estado.',
+            '(5) Parent Data:': '(5) Datos de los Padres:',
+            'In the case of non-marital filiation, the progenitor requesting the registration shall not state the name of the other progenitor, unless the filiation has already been established with respect to the latter, in which case it must be documented. In the case of unknown filiation, the names of the father and mother will be stated for identification purposes only.': 'En caso de tratarse de filiación no matrimonial, el progenitor que solicite la inscripción no manifestará el nombre del otro progenitor, a no ser que la filiación ya estuviera establecida respecto de éste, en cuyo caso deberá ser acreditada documentalmente. En el supuesto de filiación desconocida se harán constar nombres de padre y madre a los solos efectos identificadores.',
+            '(6) Parents\' Marriage:': '(6) Matrimonio de los Padres:',
+            'Indicate "Exists" or "Does Not Exist" if parents were married.': 'Indicar «Existe» o «No Existe».',
+            '(7) Observations:': '(7) Observaciones:',
+            'In case of multiple birth, the order of birth will be stated here.': 'En caso de parto múltiple se consignará el orden de nacimiento.',
+            '(8) Declarant:': '(8) Declarante:',
+            'This refers to the Interested party, father, mother, etc.': 'Interesado, padre, madre, etc.',
+            '(9) Signature:': '(9) Firma:',
+            'If unable or unwilling to sign, two witnesses will do so at their request, who will state their name, two surnames, and address clearly legible below the signature.': 'Si no pudiere o no supiere firmar, lo harán a su ruego dos testigos, los cuales harán constar debajo de la firma, en caracteres bien legibles, su nombre, dos apellidos y domicilio.',
+            'NOTE: The submission of titles for registration by third parties is permitted. However, the Civil Registry is not obliged to maintain correspondence or inform them, unless they are duly authorized in writing. In the event that the initiation of the procedure is promoted, it can only be initiated by the interested parties themselves or by lawyers or attorneys expressly authorized for this purpose.': 'NOTA: Se admite la presentación de títulos para la inscripción por terceras personas. No obstante el Registro Civil no está obligado a mantener correspondencia ni a informar a los mismos, salvo que estuvieran apoderados por escrito. En el supuesto de que se promueva la incoación del expediente, éste sólo puede ser instado por los propios interesados o por abogados o procuradores expresamente apoderados al efecto.',
+            'Export Form as PDF (Image-based)': 'Exportar Formulario como PDF (Imagen)',
+            'Export Data as Text': 'Exportar Datos como Texto',
+            'First Name(s)': 'Primer(os) Nombre(s)',
+            'Father\'s or first surname': 'Apellido del padre o primer apellido',
+            'Mother\'s or second surname': 'Apellido de la madre o segundo apellido',
+            'e.g., \'Seventh\'': 'Ej: \'Séptimo\'',
+            'e.g., \'January\'': 'Ej: \'Enero\'',
+            'e.g., \'Two thousand and twenty-four\'': 'Ej: \'Dos mil veinticuatro\'',
+            'Locality, District, Province, State': 'Localidad, Distrito, Provincia, Estado',
+            'Local Registry Name': 'Nombre del Registro local',
+            'Father\'s Mother\'s Name and Mother\'s Father\'s Name': 'Nombre de la madre del padre y del padre del padre',
+            'Mother\'s Mother\'s Name and Mother\'s Father\'s Name': 'Nombre de la madre de la madre y del padre de la madre',
+            'Enter any relevant observations here.': 'Escriba aquí cualquier observación relevante.',
+            'e.g., Interested party, father, mother, etc.': 'Ej: Interesado, padre, madre, etc.',
+            'Sign here': 'Firme aquí'
+        };
+
+
         /**
-         * @function exportFormAsPdf
-         * @description Captures the content of the form as an image using html2canvas,
-         * and then generates a multi-page PDF using jsPDF, downloading the file.
-         * Note: This generates an image-based PDF, so text will not be selectable.
+         * @function translateAndCapture
+         * @description Temporarily translates the visible form elements to Spanish and replaces inputs with their values,
+         * then runs a callback function (e.g., for PDF generation).
+         * @param {Function} callback - The function to execute after translation and preparation.
          */
-        async function exportFormAsPdf() {
+        async function translateAndCapture(callback) {
             const formContainer = document.getElementById('formContainer');
-            const exportButtonsContainer = document.querySelector('.export-buttons-container');
-
-            // Hide the export buttons container before capture
-            if (exportButtonsContainer) {
-                exportButtonsContainer.classList.add('hide-for-pdf');
-            }
-
-            // Store original elements and their display states to restore later
             const originalElements = [];
-            const tempElements = []; // To store temporary span elements for removal
+            const tempElements = [];
 
-            // 1. Handle text inputs, select, and textarea fields
+            // Store original English texts and replace with Spanish for PDF capture
+            const elementsToTranslate = formContainer.querySelectorAll(
+                'h1, h2, h3, p, label, strong, li, button, input[placeholder]'
+            );
+
+            elementsToTranslate.forEach(el => {
+                const originalText = el.textContent.trim();
+                const originalPlaceholder = el.tagName === 'INPUT' && el.hasAttribute('placeholder') ? el.getAttribute('placeholder').trim() : null;
+
+                if (spanishStaticTexts[originalText]) {
+                    originalElements.push({ element: el, type: 'text', originalContent: el.innerHTML });
+                    el.innerHTML = el.innerHTML.replace(originalText, spanishStaticTexts[originalText]);
+                } else if (originalPlaceholder && spanishStaticTexts[originalPlaceholder]) {
+                    originalElements.push({ element: el, type: 'placeholder', originalPlaceholder: originalPlaceholder });
+                    el.setAttribute('placeholder', spanishStaticTexts[originalPlaceholder]);
+                }
+            });
+
+            // Handle input field values (text, select, textarea)
             const inputsToTransform = formContainer.querySelectorAll('input:not([type="radio"]), select, textarea');
-
             inputsToTransform.forEach(input => {
                 const tempSpan = document.createElement('span');
-                tempSpan.classList.add('pdf-temp-content'); // Apply PDF-specific styling
+                tempSpan.classList.add('pdf-temp-content');
 
                 let displayValue = '';
                 if (input.tagName === 'SELECT') {
@@ -661,117 +797,129 @@
                     displayValue = input.value;
                 }
 
-                tempSpan.textContent = displayValue === '' ? ' ' : displayValue; // Use space for empty to preserve layout
-                input.parentNode.insertBefore(tempSpan, input); // Insert the span BEFORE the input
-                tempElements.push(tempSpan); // Keep track of this new span
+                tempSpan.textContent = displayValue === '' ? ' ' : displayValue;
+                input.parentNode.insertBefore(tempSpan, input);
+                tempElements.push(tempSpan);
 
-                // Store original input and its display state for restoration
-                originalElements.push({ element: input, display: input.style.display });
-                input.classList.add('hide-for-pdf'); // Hide the original input
+                originalElements.push({ element: input, type: 'input', display: input.style.display });
+                input.classList.add('hide-for-pdf');
             });
 
-            // 2. Handle radio buttons separately
-            const radioGroups = {}; // Object to group radio buttons by their 'name' attribute
+            // Handle radio button groups
+            const radioGroups = {};
             formContainer.querySelectorAll('input[type="radio"]').forEach(radio => {
                 const groupName = radio.name;
                 if (!radioGroups[groupName]) {
                     radioGroups[groupName] = {
                         selected: null,
-                        groupElement: document.getElementById(groupName + '-radio-group'), // Get the container div for the group
-                        allRadios: [] // Store all radio buttons in this group
+                        groupElement: document.getElementById(groupName + '-radio-group'),
+                        allRadios: []
                     };
                 }
-                radioGroups[groupName].allRadios.push(radio); // Add radio button to its group
+                radioGroups[groupName].allRadios.push(radio);
                 if (radio.checked) {
-                    radioGroups[groupName].selected = radio; // Mark the selected radio
+                    radioGroups[groupName].selected = radio;
                 }
             });
 
-            // Now iterate through the collected radio groups and replace them with text
             for (const groupName in radioGroups) {
                 const group = radioGroups[groupName];
-                const radioGroupContainer = group.groupElement; // The div with class="radio-group"
+                const radioGroupContainer = group.groupElement;
 
                 if (radioGroupContainer) {
                     const tempSpan = document.createElement('span');
                     tempSpan.classList.add('pdf-temp-content');
 
                     if (group.selected) {
-                        // Get the text content of the label associated with the checked radio button
                         const labelForSelectedRadio = radioGroupContainer.querySelector(`label input[name="${groupName}"][value="${group.selected.value}"]`).parentNode.textContent.trim();
-                        tempSpan.textContent = labelForSelectedRadio;
+                        // Get Spanish translation for the selected radio value for PDF visual
+                        const spanishRadioValue = labelTranslations[groupName] ? labelTranslations[groupName][group.selected.value] : labelForSelectedRadio;
+                        tempSpan.textContent = spanishRadioValue;
                     } else {
-                        tempSpan.textContent = ' '; // No selection, leave blank
+                        tempSpan.textContent = ' ';
                     }
 
-                    // Insert the temporary span before the entire radio group container
                     radioGroupContainer.parentNode.insertBefore(tempSpan, radioGroupContainer);
-                    tempElements.push(tempSpan); // Track for removal
+                    tempElements.push(tempSpan);
 
-                    // Hide the entire radio group container
-                    originalElements.push({ element: radioGroupContainer, display: radioGroupContainer.style.display });
+                    originalElements.push({ element: radioGroupContainer, type: 'group', display: radioGroupContainer.style.display });
                     radioGroupContainer.classList.add('hide-for-pdf');
                 }
             }
+            // Temporarily hide the export buttons container
+            const exportButtonsContainer = document.querySelector('.export-buttons-container');
+            if (exportButtonsContainer) {
+                originalElements.push({ element: exportButtonsContainer, type: 'button-container', display: exportButtonsContainer.style.display });
+                exportButtonsContainer.classList.add('hide-for-pdf');
+            }
 
-            // Generate canvas from the form container
-            try {
-                // Ensure html2canvas captures the full scrollable height
-                const canvas = await html2canvas(formContainer, {
-                    scale: 2, // Increase scale for better resolution
-                    useCORS: true, // Enable CORS if you have external resources (like images)
-                    windowWidth: formContainer.scrollWidth,
-                    windowHeight: formContainer.scrollHeight // Capture the full scrollable height
-                });
 
-                const imgData = canvas.toDataURL('image/png');
-                const { jsPDF } = window.jspdf; // Get jsPDF from global scope
+            // Execute the callback function (e.g., PDF generation)
+            await callback();
 
-                const pdf = new jsPDF({
-                    orientation: 'portrait',
-                    unit: 'px',
-                    format: 'a4'
-                });
+            // Restore original HTML elements
+            originalElements.forEach(item => {
+                if (item.type === 'text') {
+                    item.element.innerHTML = item.originalContent;
+                } else if (item.type === 'placeholder') {
+                    item.element.setAttribute('placeholder', item.originalPlaceholder);
+                } else {
+                    item.element.classList.remove('hide-for-pdf');
+                    item.element.style.display = item.display;
+                }
+            });
+            tempElements.forEach(span => span.remove()); // Remove temporary spans
+        }
 
-                const imgWidth = pdf.internal.pageSize.getWidth();
-                const pageHeight = pdf.internal.pageSize.getHeight(); // Height of a single PDF page in pixels
-                const imgHeight = canvas.height * imgWidth / canvas.width; // Image height scaled to PDF width
 
-                let heightLeft = imgHeight;
-                let position = 0; // Current position on the image being added to PDF
+        /**
+         * @function exportFormAsPdf
+         * @description Initiates the process to capture the form with Spanish labels and English inputs,
+         * then generates a multi-page PDF.
+         */
+        async function exportFormAsPdf() {
+            await translateAndCapture(async () => {
+                const formContainer = document.getElementById('formContainer');
+                try {
+                    const canvas = await html2canvas(formContainer, {
+                        scale: 2,
+                        useCORS: true,
+                        windowWidth: formContainer.scrollWidth,
+                        windowHeight: formContainer.scrollHeight
+                    });
 
-                // Add the first page
-                pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
-                heightLeft -= pageHeight;
+                    const imgData = canvas.toDataURL('image/png');
+                    const { jsPDF } = window.jspdf;
 
-                // Add subsequent pages if content overflows
-                while (heightLeft > 0) {
-                    pdf.addPage();
-                    position = - (imgHeight - heightLeft); // Calculate new position for the next part of the image
+                    const pdf = new jsPDF({
+                        orientation: 'portrait',
+                        unit: 'px',
+                        format: 'a4'
+                    });
+
+                    const imgWidth = pdf.internal.pageSize.getWidth();
+                    const pageHeight = pdf.internal.pageSize.getHeight();
+                    const imgHeight = canvas.height * imgWidth / canvas.width;
+
+                    let heightLeft = imgHeight;
+                    let position = 0;
+
                     pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
                     heightLeft -= pageHeight;
+
+                    while (heightLeft > 0) {
+                        pdf.addPage();
+                        position = - (imgHeight - heightLeft);
+                        pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+                        heightLeft -= pageHeight;
+                    }
+
+                    pdf.save('Formulario_Nacimiento_Ciudadania_España_Cumplimentado.pdf');
+
+                } catch (error) {
+                    console.error("Error al generar PDF:", error);
                 }
-
-                pdf.save('Formulario_Nacimiento_Ciudadania_España_Cumplimentado.pdf');
-
-            } catch (error) {
-                console.error("Error al generar PDF:", error);
-                // In a real application, you might show a user-friendly message here.
-            } finally {
-                // Restore original input fields and hide temporary content
-                originalElements.forEach(item => {
-                    item.element.classList.remove('hide-for-pdf'); // Remove hide class
-                    item.element.style.display = item.display; // Restore original display property
-                });
-
-                // Remove all temporary spans
-                tempElements.forEach(span => span.remove());
-
-                // Restore the export buttons container
-                if (exportButtonsContainer) {
-                    exportButtonsContainer.classList.remove('hide-for-pdf');
-                }
-            }
+            });
         }
 
         /**
@@ -783,33 +931,45 @@
             let formData = '';
             const processedRadioGroups = new Set(); // Keep track of radio groups already processed
 
-            const sections = [
-                { title: 'DATOS DEL NACIDO', query: '#formContainer > section:nth-child(3)' },
-                { title: 'DATOS DEL NACIMIENTO', query: '#formContainer > section:nth-child(3)' }, // Same section, but second part
-                { title: 'DATOS DEL PADRE (5)', query: '#formContainer > section:nth-child(4)' },
-                { title: 'DATOS DE LA MADRE (5)', query: '#formContainer > section:nth-child(5)' },
-                { title: 'MATRIMONIO DE LOS PADRES (6)', query: '#formContainer > section:nth-child(7)' },
-                { title: 'OBSERVACIONES (7)', query: '#formContainer > section:nth-child(8)' },
-                { title: 'DECLARANTE (8)', query: '#formContainer > section:nth-child(9)' },
-                { title: 'INSTRUCCIONES', query: '#formContainer > section:nth-child(10)' }
-            ];
+            // Map section titles for the text export
+            const sectionTitlesMap = {
+                'BIRTH DATA': 'DATOS DEL NACIDO',
+                'BIRTH DETAILS': 'DATOS DEL NACIMIENTO',
+                'FATHER\'S DATA (5)': 'DATOS DEL PADRE (5)',
+                'MOTHER\'S DATA (5)': 'DATOS DE LA MADRE (5)',
+                'PARENTS\' MARRIAGE (6)': 'MATRIMONIO DE LOS PADRES (6)',
+                'OBSERVATIONS (7)': 'OBSERVACIONES (7)',
+                'DECLARANT (8)': 'DECLARANTE (8)',
+                'INSTRUCTIONS': 'INSTRUCCIONES',
+            };
 
-            sections.forEach(sectionInfo => {
-                const sectionElement = document.querySelector(sectionInfo.query);
-                if (!sectionElement) return;
+            const formSections = document.querySelectorAll('.form-container > section'); // Get all main sections
 
-                formData += `\n--- ${sectionInfo.title} ---\n`;
+            formSections.forEach(section => {
+                const sectionHeaderElement = section.querySelector('.subsection-title');
+                let sectionTitle = '';
+                if (sectionHeaderElement) {
+                    // Try to get the English title and map it to Spanish
+                    sectionTitle = sectionHeaderElement.textContent.trim();
+                    sectionTitle = sectionTitlesMap[sectionTitle] || sectionTitle; // Use Spanish map or default to English
+                } else if (section.classList.contains('instruction-section')) {
+                     sectionTitle = sectionTitlesMap['INSTRUCTIONS'];
+                }
 
-                if (sectionInfo.title === 'INSTRUCCIONES') {
-                    // For instructions, capture the notes block directly
-                    const notes = sectionElement.querySelector('.notes');
+                if (sectionTitle) {
+                    formData += `\n--- ${sectionTitle} ---\n`;
+                }
+
+                // Special handling for the main instructions section
+                if (section.classList.contains('instruction-section')) {
+                    const notes = section.querySelector('.notes');
                     if (notes) {
                         formData += notes.textContent.trim().split('\n').filter(line => line.trim() !== '').join('\n') + '\n';
                     }
-                    return;
+                    return; // Skip input processing for instructions section
                 }
 
-                sectionElement.querySelectorAll('input, textarea, select').forEach(element => {
+                section.querySelectorAll('input, textarea, select').forEach(element => {
                     let key = element.id || element.name;
                     let value = '';
                     let label = '';
@@ -820,11 +980,11 @@
                         }
                         const selectedRadio = document.querySelector(`input[name="${element.name}"]:checked`);
                         if (selectedRadio) {
-                            label = labelTranslations[element.name]; // Get the group's label from the map
-                            value = labelTranslations[element.name][selectedRadio.value]; // Get the specific selected value's translation
+                            label = labelTranslations[element.name] ? labelTranslations[element.name].group_label : element.name; // Get the group's Spanish label
+                            value = labelTranslations[element.name] && labelTranslations[element.name][selectedRadio.value] ? labelTranslations[element.name][selectedRadio.value] : selectedRadio.value; // Get the specific selected value's Spanish translation or default to English value
                             formData += `${label}: ${value}\n`;
                         } else {
-                            label = labelTranslations[element.name];
+                            label = labelTranslations[element.name] ? labelTranslations[element.name].group_label : element.name;
                             formData += `${label}: (No seleccionado)\n`; // Indicate no selection if needed
                         }
                         processedRadioGroups.add(element.name); // Mark group as processed
@@ -835,12 +995,19 @@
                         value = element.value;
                     }
 
-                    label = labelTranslations[key]; // Get the Spanish label from the map
+                    // Get the Spanish label from the map using the English ID/name
+                    label = labelTranslations[key];
                     if (label) {
                         formData += `${label}: ${value}\n`;
                     }
                 });
             });
+
+            // Add footer text if it exists
+            const footerText = document.querySelector('.form-footer');
+            if (footerText && spanishStaticTexts[footerText.textContent.trim()]) {
+                formData += `\n${spanishStaticTexts[footerText.textContent.trim()]}\n`;
+            }
 
             // Create a Blob with the text data
             const blob = new Blob([formData], { type: 'text/plain;charset=utf-8' });
