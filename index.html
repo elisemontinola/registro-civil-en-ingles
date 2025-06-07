@@ -1,10 +1,10 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Spanish Birth Registration Form (English Input, Spanish Export)</title>
+    <!-- Tailwind CSS CDN for styling -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         /* Custom styles for better readability and PDF-like appearance */
@@ -248,6 +248,7 @@
             display: none !important;
         }
     </style>
+    <!-- jsPDF and html2canvas libraries for PDF export -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
@@ -549,7 +550,7 @@
                 <p class="font-semibold text-lg mb-2" data-en="Fill in by typewriter or by hand in block letters." data-es="Cumplimentar a máquina o a mano con caracteres de imprenta.">Fill in by typewriter or by hand in block letters.</p>
                 <ul>
                     <li><strong class="font-semibold" data-en="(1) Name:" data-es="(1) Nombre:">(1) Name:</strong> <span data-en="Only birth registrations stating two simple names (e.g., José Luis) or one compound name (e.g., María del Carmen) may be performed. Foreign names with a translation into any Spanish language must be entered in the version chosen by the person who is to impose the name (Castilian, Catalan, Basque, Galician, etc.)." data-es="Unicamente se podrán practicar inscripciones de nacimiento haciendo constar dos nombres simples (p. e., José Luis o uno compuesto, María del Carmen). Los nombres extranjeros que tengan traducción a cualquiera de las lenguas españolas deberán consignarse en la versión que elija quien haya de imponer el nombre (castellana, catalana, vasca, gallega, etc.).">Only birth registrations stating two simple names (e.g., José Luis) or one compound name (e.g., María del Carmen) may be performed. Foreign names with a translation into any Spanish language must be entered in the version chosen by the person who is to impose the name (Castilian, Catalan, Basque, Galician, etc.).</span></li>
-                    <li><strong class="font-semibold" data-en="(2) Surnames:" data-es="(2) Apellidos:">(2) Surnames:</strong> <span data-en="Birth registrations must be carried out stating two surnames, including those registrations of foreign persons who have acquired Spanish nationality." data-es="Las inscripciones de nacimiento habrán de practicarse haciendo constar dos apellidos, incluso aquellas inscripciones de personas extranjeras que hayan adquirido la nacionalidad española.">Birth registrations must be carried out stating two surnames, including those registrations of foreign persons who have acquired Spanish nationality.</span></li>
+                    <li><strong class="font-semibold" data-en="(2) Surnames:" data-es="(2) Apellidos:">(2) Surnames:</strong> <span data-en="Birth registrations must be carried out stating two surnames, including those registrations of foreign persons who have acquired Spanish nationality." data-es="Las inscripciones de nacimiento habrán de practicarse haciendo constar dos apellidos, incluso aquellas inscripciones de personas extranjeras que hayan adquirido la nacionalidad española.">Birth registrations must be carried out stating two surnames, including those registrations of foreign persons who hayan adquirido la nacionalidad española.</span></li>
                     <li><strong class="font-semibold" data-en="(3) Day:" data-es="(3) Día:">(3) Day:</strong> <span data-en="Enter the data in letters (e.g., 'Seventh')." data-es="Consignar el dato en letra.">Enter the data in letters (e.g., 'Seventh').</span></li>
                     <li><strong class="font-semibold" data-en="(4) Place:" data-es="(4) Lugar:">(4) Place:</strong> <span data-en="Indicate locality, district, province, and State." data-es="Indicar localidad, distrito, provincia y Estado.">Indicate locality, district, provincia y Estado.</span></li>
                     <li><strong class="font-semibold" data-en="(5) Parent Data:" data-es="(5) Datos de los Padres:">(5) Parent Data:</strong> <span data-en="In the case of non-marital filiation, the progenitor requesting the registration shall not state the name of the other progenitor, unless the filiation has already been established with respect to the latter, in which case it must be documented. In the case of unknown filiation, the names of the father and mother will be stated for identification purposes only." data-es="En caso de tratarse de filiación no matrimonial, el progenitor que solicite la inscripción no manifestará el nombre del otro progenitor, a no ser que la filiación ya estuviera establecida respecto de éste, en cuyo caso deberá ser acreditada documentalmente. En el supuesto de filiación desconocida se harán constar nombres de padre y madre a los solos efectos identificadores.">In the case of non-marital filiation, the progenitor requesting the registration shall not state the name of the other progenitor, unless the filiation has already been established with respect to the latter, in which case it must be documented. In the case of unknown filiation, the names of the father and mother will be stated for identification purposes only.</span></li>
@@ -559,7 +560,7 @@
                     <li><strong class="font-semibold" data-en="(9) Signature:" data-es="(9) Firma:">(9) Signature:</strong> <span data-en="If unable or unwilling to sign, two witnesses will do so at their request, who will state their name, two surnames, and address clearly legible below the signature." data-es="Si no pudiere o no supiere firmar, lo harán a su ruego dos testigos, los cuales harán constar debajo de la firma, en caracteres bien legibles, su nombre, dos apellidos y domicilio.">If unable or unwilling to sign, two witnesses will do so at their request, who will state their name, two surnames, and address clearly legible below the signature.</span></li>
                 </ul>
                 <p class="mt-4 font-bold text-sm" data-en="NOTE: The submission of titles for registration by third parties is permitted. However, the Civil Registry is not obliged to maintain correspondence or inform them, unless they are duly authorized in writing. In the event that the initiation of the procedure is promoted, it can only be initiated by the interested parties themselves or by lawyers or attorneys expressly authorized for this purpose." data-es="NOTA: Se admite la presentación de títulos para la inscripción por terceras personas. No obstante el Registro Civil no está obligado a mantener correspondencia ni a informar a los mismos, salvo que estuvieran apoderados por escrito. En el supuesto de que se promueva la incoación del expediente, éste sólo puede ser instado por los propios interesados o por abogados o procuradores expresamente apoderados al efecto.">
-                    NOTE: The submission of titles for registration by third parties is permitted. However, the Civil Registry is not obliged to maintain correspondence or inform them, unless they are duly authorized in writing. In the event that the initiation of the procedure is promoted, it can only be initiated by the interested parties themselves or by lawyers or attorneys expressly authorized for this purpose.
+                    NOTE: The submission of titles for registration by third parties is permitted. However, the Civil Registry is not obliged to maintain correspondence or inform them, unless they are duly authorized in writing. In the Event that the initiation of the procedure is promoted, it can only be initiated by the interested parties themselves or by lawyers or attorneys expressly authorized for this purpose.
                 </p>
             </div>
         </section>
@@ -620,7 +621,7 @@
             'This refers to the Interested party, father, mother, etc.': 'Interesado, padre, madre, etc.',
             '(9) Signature:': '(9) Firma:',
             'If unable or unwilling to sign, two witnesses will do so at their request, who will state their name, two surnames, and address clearly legible below the signature.': 'Si no pudiere o no supiere firmar, lo harán a su ruego dos testigos, los cuales harán constar debajo de la firma, en caracteres bien legibles, su nombre, dos apellidos y domicilio.',
-            'NOTE: The submission of titles for registration by third parties is permitted. However, the Civil Registry is not obliged to maintain correspondence or inform them, unless they are duly authorized in writing. In the event that the initiation of the procedure is promoted, it can only be initiated by the interested parties themselves or by lawyers or attorneys expressly authorized for this purpose.': 'NOTA: Se admite la presentación de títulos para la inscripción por terceras personas. No obstante el Registro Civil no está obligado a mantener correspondencia ni a informar a los mismos, salvo que estuvieran apoderados por escrito. En el supuesto de que se promueva la incoación del expediente, éste sólo puede ser instado por los propios interesados o por abogados o procuradores expresamente apoderados al efecto.',
+            'NOTE: The submission of titles for registration by third parties is permitted. However, the Civil Registry is not obliged to maintain correspondence or inform them, unless they are duly authorized in writing. In the Event that the initiation of the procedure is promoted, it can only be initiated by the interested parties themselves or by lawyers or attorneys expressly authorized for this purpose.': 'NOTA: Se admite la presentación de títulos para la inscripción por terceras personas. No obstante el Registro Civil no está obligado a mantener correspondencia ni a informar a los mismos, salvo que estuvieran apoderados por escrito. En el supuesto de que se promueva la incoación del expediente, éste sólo puede ser instado por los propios interesados o por abogados o procuradores expresamente apoderados al efecto.',
 
 
             // Field Labels (for TXT export, matching the HTML `for` attributes or `name` attributes)
@@ -917,138 +918,138 @@
          * allowing the user to copy and paste the content.
          */
         function exportFormAsText() {
-            // First, apply Spanish language temporarily for text extraction logic
-            // This is done implicitly within prepareFormForExport
-            prepareFormForExport(() => {
-                let formData = '';
-                const formContainer = document.getElementById('formContainer');
-                const processedRadioGroups = new Set(); // To prevent duplicate processing of radio groups
+            // This function directly extracts data and labels without temporary DOM manipulation.
+            // It uses the labelTranslations map for Spanish labels and reads current English input values.
+            let formData = '';
+            const formContainer = document.getElementById('formContainer');
+            const processedRadioGroups = new Set(); // To prevent duplicate processing of radio groups
 
-                // --- Header Section ---
-                // These are already in Spanish from prepareFormForExport
-                formData += formContainer.querySelector('h1[data-es]').textContent.trim() + '\n';
-                formData += formContainer.querySelector('h2[data-es]').textContent.trim() + '\n';
-                formData += formContainer.querySelector('h3[data-es]').textContent.trim() + '\n\n';
-                formData += formContainer.querySelector('section:nth-of-type(2) p:nth-of-type(1)[data-es]').textContent.trim() + '\n';
-                formData += formContainer.querySelector('section:nth-of-type(2) p:nth-of-type(2)[data-es]').textContent.trim() + '\n';
-                formData += formContainer.querySelector('section:nth-of-type(2) p:nth-of-type(3)[data-es]').textContent.trim() + '\n\n';
+            // --- Header Section ---
+            formData += labelTranslations['SPANISH CONSULAR SERVICE'].trim() + '\n';
+            formData += labelTranslations['CONSULAR CIVIL REGISTRY OF SPAIN IN'].trim() + '\n';
+            formData += labelTranslations['CIVIL REGISTRY'].trim() + '\n\n';
+            formData += labelTranslations['Section I. BIRTHS'].trim() + '\n';
+            formData += labelTranslations['(Declaration of data for registration)'].trim() + '\n';
+            formData += labelTranslations['Important note: Before filling out, see instructions on the back (below).'].trim() + '\n\n';
 
 
-                // --- Iterate through form sections and fields ---
-                // Assign IDs to sections to target them easily for TXT export, e.g., <section id="birth-data-section">
-                // Assuming sections are ordered as per previous HTML structure.
-                const sectionsToProcess = [
-                    { selector: 'section:nth-of-type(3)', titleKey: 'BIRTH DATA' }, // Birth Data Section
-                    { selector: 'section:nth-of-type(4)', titleKey: 'FATHER\'S DATA (5)' }, // Father's Data Section
-                    { selector: 'section:nth-of-type(5)', titleKey: 'MOTHER\'S DATA (5)' }, // Mother's Data Section
-                    { selector: 'section:nth-of-type(7)', titleKey: 'PARENTS\' MARRIAGE (6)' }, // Parents' Marriage Section
-                    { selector: 'section:nth-of-type(8)', titleKey: 'OBSERVATIONS (7)' }, // Observations Section
-                    { selector: 'section:nth-of-type(9)', titleKey: 'DECLARANT (8)' }, // Declarant Section
-                    { selector: 'section:nth-of-type(10)', titleKey: 'INSTRUCTIONS' } // Instructions Section
-                ];
+            // --- Iterate through form sections and fields ---
+            const sectionsToProcess = [
+                { selector: 'section:nth-of-type(3)', titleKey: 'BIRTH DATA' }, // Birth Data Section
+                { selector: 'section:nth-of-type(4)', titleKey: 'FATHER\'S DATA (5)' }, // Father's Data Section
+                { selector: 'section:nth-of-type(5)', titleKey: 'MOTHER\'S DATA (5)' }, // Mother's Data Section
+                { selector: 'section:nth-of-type(7)', titleKey: 'PARENTS\' MARRIAGE (6)' }, // Parents' Marriage Section
+                { selector: 'section:nth-of-type(8)', titleKey: 'OBSERVATIONS (7)' }, // Observations Section
+                { selector: 'section:nth-of-type(9)', titleKey: 'DECLARANT (8)' } // Declarant Section
+            ];
 
-                sectionsToProcess.forEach(sectionInfo => {
-                    const sectionElement = document.querySelector(sectionInfo.selector);
-                    if (!sectionElement) return;
+            sectionsToProcess.forEach(sectionInfo => {
+                const sectionElement = document.querySelector(sectionInfo.selector);
+                if (!sectionElement) return;
 
-                    let sectionTitle = '';
-                    if (sectionInfo.titleKey === 'INSTRUCTIONS') {
-                         sectionTitle = sectionElement.querySelector('.section-title[data-es]').textContent.trim();
-                    } else {
-                        const subsectionTitleEl = sectionElement.querySelector('.subsection-title');
-                        if (subsectionTitleEl && subsectionTitleEl.hasAttribute('data-es')) {
-                            sectionTitle = subsectionTitleEl.getAttribute('data-es');
-                        } else if (labelTranslations[sectionInfo.titleKey]) {
-                            sectionTitle = labelTranslations[sectionInfo.titleKey];
-                        }
-                    }
-
-                    if (sectionTitle) {
-                        formData += `--- ${sectionTitle} ---\n`;
-                    }
-
-                    // Special handling for the instructions section
-                    if (sectionInfo.titleKey === 'INSTRUCTIONS') {
-                        const notes = sectionElement.querySelector('.notes');
-                        if (notes) {
-                            notes.querySelectorAll('p[data-es], li strong[data-es], li span[data-es]').forEach(el => {
-                                if (el.tagName === 'STRONG' && el.hasAttribute('data-es')) { // For bolded part of list item
-                                    formData += el.getAttribute('data-es').trim();
-                                } else if (el.tagName === 'SPAN' && el.hasAttribute('data-es')) { // For spanned part of list item
-                                    formData += el.getAttribute('data-es').trim() + '\n';
-                                } else if (el.tagName === 'P' && el.hasAttribute('data-es')) { // For general paragraphs
-                                    formData += el.getAttribute('data-es').trim() + '\n';
-                                }
-                            });
-                        }
-                        formData += '\n';
-                        return; // Skip input processing for instructions section
-                    }
-
-                    // Process input fields within the section
-                    sectionElement.querySelectorAll('input, select, textarea').forEach(input => {
-                        let fieldLabel = '';
-                        let fieldValue = '';
-                        const inputId = input.id || input.name;
-
-                        // Get the Spanish label from the labelTranslations map
-                        if (labelTranslations[inputId] && typeof labelTranslations[inputId] === 'string') {
-                            fieldLabel = labelTranslations[inputId];
-                        } else {
-                            // Fallback to the data-es attribute of the associated label or the input's data-es attribute
-                            const labelEl = document.querySelector(`label[for="${inputId}"]`);
-                            if (labelEl && labelEl.hasAttribute('data-es')) {
-                                fieldLabel = labelEl.getAttribute('data-es');
-                            } else if (input.hasAttribute('data-es-placeholder')) {
-                                // For inputs that primarily use placeholder as a label, e.g., signature place
-                                fieldLabel = input.getAttribute('data-es-placeholder');
-                            } else {
-                                fieldLabel = inputId; // Use the ID/Name as a last resort
-                            }
-                        }
-
-                        if (input.type === 'radio') {
-                            if (processedRadioGroups.has(input.name)) {
-                                return;
-                            }
-                            const selectedRadio = document.querySelector(`input[name="${input.name}"]:checked`);
-                            if (selectedRadio) {
-                                // Get the Spanish translation for the selected radio option value from data-es on its span
-                                const spanEl = selectedRadio.nextElementSibling;
-                                fieldValue = spanEl ? spanEl.getAttribute('data-es') : selectedRadio.value;
-                            } else {
-                                fieldValue = '(No seleccionado)';
-                            }
-                            // Use the group_label from labelTranslations for radio groups
-                            fieldLabel = labelTranslations[input.name] && labelTranslations[input.name].group_label ? labelTranslations[input.name].group_label : fieldLabel;
-                            processedRadioGroups.add(input.name); // Mark group as processed
-
-                        } else if (input.tagName === 'SELECT') {
-                            fieldValue = input.options[input.selectedIndex].text;
-                        } else {
-                            fieldValue = input.value;
-                        }
-
-                        formData += `${fieldLabel}: ${fieldValue}\n`;
-                    });
-                    formData += '\n'; // Add a newline after each group of fields
-                });
-
-                // --- Footer ---
-                const footerEl = document.querySelector('.form-footer');
-                if (footerEl && footerEl.hasAttribute('data-es')) {
-                    formData += `${footerEl.getAttribute('data-es').trim()}\n\n`;
+                const sectionTitle = labelTranslations[sectionInfo.titleKey];
+                if (sectionTitle) {
+                    formData += `--- ${sectionTitle} ---\n`;
                 }
 
-                const blob = new Blob([formData], { type: 'text/plain;charset=utf-8' });
-                const a = document.createElement('a');
-                a.href = URL.createObjectURL(blob);
-                a.download = 'Datos_Formulario_Nacimiento_Ciudadania_España.txt';
-                document.body.appendChild(a);
-                a.click();
-                document.body.removeChild(a);
-                URL.revokeObjectURL(a.href);
+                sectionElement.querySelectorAll('input, select, textarea').forEach(input => {
+                    let fieldLabel = '';
+                    let fieldValue = '';
+                    const inputId = input.id || input.name;
+
+                    // Get the Spanish label from the labelTranslations map
+                    if (labelTranslations[inputId] && typeof labelTranslations[inputId] === 'string') {
+                        fieldLabel = labelTranslations[inputId];
+                    } else if (labelTranslations[inputId] && typeof labelTranslations[inputId] === 'object' && labelTranslations[inputId].group_label) {
+                         // For radio groups, use the group_label
+                         fieldLabel = labelTranslations[inputId].group_label;
+                    } else {
+                        // Fallback to the English label from the DOM if a direct translation isn't found
+                        const labelEl = document.querySelector(`label[for="${inputId}"]`);
+                        if (labelEl) {
+                            fieldLabel = labelEl.textContent.trim();
+                        } else if (input.hasAttribute('placeholder')) {
+                            fieldLabel = input.getAttribute('placeholder');
+                        } else {
+                            fieldLabel = inputId; // Use ID/Name as a last resort
+                        }
+                    }
+
+                    if (input.type === 'radio') {
+                        if (processedRadioGroups.has(input.name)) {
+                            return; // Skip if this radio group has already been processed
+                        }
+                        const selectedRadio = document.querySelector(`input[name="${input.name}"]:checked`);
+                        if (selectedRadio) {
+                            // Get the Spanish translation for the selected radio option value
+                            const selectedOptionValue = selectedRadio.value;
+                            fieldValue = labelTranslations[input.name] && labelTranslations[input.name][selectedOptionValue] ? labelTranslations[input.name][selectedOptionValue] : selectedOptionValue;
+                        } else {
+                            fieldValue = '(No seleccionado)';
+                        }
+                        processedRadioGroups.add(input.name); // Mark group as processed
+
+                    } else if (input.tagName === 'SELECT') {
+                        fieldValue = input.options[input.selectedIndex].text;
+                    } else {
+                        fieldValue = input.value;
+                    }
+
+                    formData += `${fieldLabel}: ${fieldValue}\n`;
+                });
+                formData += '\n'; // Add a newline after each group of fields
             });
+
+            // --- Footer ---
+            formData += labelTranslations['Continues on back.../'].trim() + '\n\n';
+
+            // --- Instructions Section ---
+            const instructionsSection = document.querySelector('.instruction-section');
+            if (instructionsSection) {
+                const instructionsTitle = labelTranslations['INSTRUCTIONS'];
+                formData += `--- ${instructionsTitle} ---\n`;
+                
+                // Get the main paragraph of instructions
+                formData += labelTranslations['Fill in by typewriter or by hand in block letters.'].trim() + '\n';
+                
+                // Get list items and their content
+                const listItems = instructionsSection.querySelectorAll('.notes ul li');
+                listItems.forEach(li => {
+                    const strongTag = li.querySelector('strong');
+                    const spanTag = li.querySelector('span');
+                    let listItemText = '';
+                    if (strongTag && strongTag.hasAttribute('data-es')) {
+                        listItemText += strongTag.getAttribute('data-es').trim() + ' ';
+                    } else if (strongTag) {
+                        listItemText += strongTag.textContent.trim() + ' ';
+                    }
+
+                    if (spanTag && spanTag.hasAttribute('data-es')) {
+                        listItemText += spanTag.getAttribute('data-es').trim();
+                    } else if (spanTag) {
+                        listItemText += spanTag.textContent.trim();
+                    }
+                    if (listItemText) {
+                        formData += `- ${listItemText}\n`;
+                    }
+                });
+
+                // Get the final NOTE paragraph
+                const finalNote = instructionsSection.querySelector('.notes p.mt-4.font-bold.text-sm');
+                if (finalNote && finalNote.hasAttribute('data-es')) {
+                    formData += `\n${finalNote.getAttribute('data-es').trim()}\n`;
+                }
+            }
+
+
+            const blob = new Blob([formData], { type: 'text/plain;charset=utf-8' });
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = 'Datos_Formulario_Nacimiento_Ciudadania_España.txt';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(a.href);
         }
     </script>
 </body>
