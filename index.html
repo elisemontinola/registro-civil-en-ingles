@@ -188,7 +188,7 @@
         }
         /* Style for temporary content visibility during PDF generation */
         .pdf-temp-content {
-            display: inline-block; /* Make it inline-block to preserve flow */
+            display: block; /* Ensures it takes up the block space */
             padding: 0.75rem; /* Match input padding */
             font-size: 1rem; /* Match input font size */
             color: #1f2937; /* Match input text color */
@@ -197,8 +197,9 @@
             border: 1px solid #cbd5e1; /* Match input border */
             border-radius: 0.375rem; /* Match input border-radius */
             background-color: #f8fafc; /* Slightly different background to indicate it's text */
-            vertical-align: middle; /* Align with surrounding text/labels */
             width: 100%; /* Ensure it takes full width of parent */
+            line-height: 1.25; /* Adjust line height for better text fit in box */
+            word-wrap: break-word; /* Allow long words to break */
         }
         /* Hide original inputs during PDF generation */
         .hide-for-pdf {
@@ -546,17 +547,16 @@
 
             // Store original elements and their display states to restore later
             const originalElements = [];
-            const tempElements = [];
+            const tempElements = []; // To store temporary span elements for removal
 
-            // Temporarily replace input fields with their values for PDF rendering
-            const inputs = formContainer.querySelectorAll('input:not([type="radio"]), select, textarea');
-            const radioGroups = {}; // To manage radio button sets
+            // 1. Handle text inputs, select, and textarea fields
+            const inputsToTransform = formContainer.querySelectorAll('input:not([type="radio"]), select, textarea');
 
-            inputs.forEach(input => {
+            inputsToTransform.forEach(input => {
                 const tempSpan = document.createElement('span');
-                tempSpan.classList.add('pdf-temp-content');
-                let displayValue = '';
+                tempSpan.classList.add('pdf-temp-content'); // Apply PDF-specific styling
 
+                let displayValue = '';
                 if (input.tagName === 'SELECT') {
                     displayValue = input.options[input.selectedIndex].text;
                 } else {
@@ -564,55 +564,57 @@
                 }
 
                 tempSpan.textContent = displayValue === '' ? ' ' : displayValue; // Use space for empty to preserve layout
-                input.parentNode.insertBefore(tempSpan, input.nextSibling); // Insert after the input
-                tempElements.push(tempSpan); // Keep track of temp spans
+                input.parentNode.insertBefore(tempSpan, input); // Insert the span BEFORE the input
+                tempElements.push(tempSpan); // Keep track of this new span
 
+                // Store original input and its display state for restoration
                 originalElements.push({ element: input, display: input.style.display });
-                input.classList.add('hide-for-pdf'); // Hide the actual input
+                input.classList.add('hide-for-pdf'); // Hide the original input
             });
 
-            // Handle radio buttons separately
+            // 2. Handle radio buttons separately
+            const radioGroups = {}; // Object to group radio buttons by their 'name' attribute
             formContainer.querySelectorAll('input[type="radio"]').forEach(radio => {
                 const groupName = radio.name;
                 if (!radioGroups[groupName]) {
                     radioGroups[groupName] = {
                         selected: null,
-                        allInputs: [],
-                        tempSpan: null // To hold the single temp span for the group
+                        groupElement: document.getElementById(groupName + '-radio-group'), // Get the container div for the group
+                        allRadios: [] // Store all radio buttons in this group
                     };
                 }
-                radioGroups[groupName].allInputs.push(radio);
-
+                radioGroups[groupName].allRadios.push(radio); // Add radio button to its group
                 if (radio.checked) {
-                    radioGroups[groupName].selected = radio;
+                    radioGroups[groupName].selected = radio; // Mark the selected radio
                 }
             });
 
+            // Now iterate through the collected radio groups and replace them with text
             for (const groupName in radioGroups) {
                 const group = radioGroups[groupName];
-                if (group.selected) {
+                const radioGroupContainer = group.groupElement; // The div with class="radio-group"
+
+                if (radioGroupContainer) {
                     const tempSpan = document.createElement('span');
                     tempSpan.classList.add('pdf-temp-content');
-                    // Get the text from the label associated with the checked radio button
-                    const label = document.querySelector(`label input[name="${groupName}"][value="${group.selected.value}"]`).textContent.trim();
-                    tempSpan.textContent = label;
-                    // Find a suitable place to insert the temp span, e.g., after the radio group container
-                    const radioGroupContainer = document.getElementById(groupName + '-radio-group'); // Assuming unique IDs like "born-sex-radio-group"
-                    if (radioGroupContainer) {
-                        radioGroupContainer.parentNode.insertBefore(tempSpan, radioGroupContainer.nextSibling);
-                        tempElements.push(tempSpan);
+
+                    if (group.selected) {
+                        // Get the text from the label associated with the checked radio button
+                        // We assume the label is a direct parent or sibling of the radio input
+                        const labelElement = document.querySelector(`label input[name="${groupName}"][value="${group.selected.value}"]`);
+                        tempSpan.textContent = labelElement ? labelElement.textContent.trim() : group.selected.value;
+                    } else {
+                        tempSpan.textContent = ' '; // No selection, leave blank or 'N/A'
                     }
+
+                    // Insert the temporary span before the entire radio group container
+                    radioGroupContainer.parentNode.insertBefore(tempSpan, radioGroupContainer);
+                    tempElements.push(tempSpan); // Track for removal
+
+                    // Hide the entire radio group container
+                    originalElements.push({ element: radioGroupContainer, display: radioGroupContainer.style.display });
+                    radioGroupContainer.classList.add('hide-for-pdf');
                 }
-                // Hide all radio buttons and their labels within this group
-                group.allInputs.forEach(radio => {
-                    originalElements.push({ element: radio, display: radio.style.display });
-                    radio.classList.add('hide-for-pdf');
-                    // Also hide the associated label element if it's a direct parent
-                    if (radio.parentNode.tagName === 'LABEL') {
-                        originalElements.push({ element: radio.parentNode, display: radio.parentNode.style.display });
-                        radio.parentNode.classList.add('hide-for-pdf');
-                    }
-                });
             }
 
 
@@ -656,7 +658,7 @@
                 console.error("Error generating PDF:", error);
                 // In a real application, you might show a user-friendly message here.
             } finally {
-                // Restore original input fields and hide temporary content
+                // Restore original input fields
                 originalElements.forEach(item => {
                     item.element.classList.remove('hide-for-pdf'); // Remove hide class
                     item.element.style.display = item.display; // Restore original display property
@@ -675,5 +677,3 @@
     </script>
 </body>
 </html>
-
-
