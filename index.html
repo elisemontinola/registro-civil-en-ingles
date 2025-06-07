@@ -271,7 +271,7 @@
             <button class="language-button" onclick="toggleLanguage('en')">Revertir al Inglés</button>
         </div>
 
-        <section>
+        <section id="birth-data-section">
             <div class="subsection-title" data-en="BIRTH DATA" data-es="DATOS DEL NACIDO">BIRTH DATA</div>
             <div class="grid-layout">
                 <div class="form-group">
@@ -344,7 +344,7 @@
             </div>
         </section>
 
-        <section>
+        <section id="father-data-section">
             <div class="subsection-title" data-en="FATHER'S DATA (5)" data-es="DATOS DEL PADRE (5)">FATHER'S DATA (5)</div>
             <div class="grid-layout">
                 <div class="form-group">
@@ -398,7 +398,7 @@
             </div>
         </section>
 
-        <section>
+        <section id="mother-data-section">
             <div class="subsection-title" data-en="MOTHER'S DATA (5)" data-es="DATOS DE LA MADRE (5)">MOTHER'S DATA (5)</div>
             <div class="grid-layout">
                 <div class="form-group">
@@ -456,7 +456,7 @@
             Continues on back.../
         </div>
 
-        <section class="mt-8">
+        <section id="marriage-section" class="mt-8">
             <div class="subsection-title" data-en="PARENTS' MARRIAGE (6)" data-es="MATRIMONIO DE LOS PADRES (6)">PARENTS' MARRIAGE (6)</div>
             <div class="grid-layout">
                 <div class="form-group full-width">
@@ -478,14 +478,14 @@
             </div>
         </section>
 
-        <section>
+        <section id="observations-section">
             <div class="subsection-title" data-en="OBSERVATIONS (7)" data-es="OBSERVACIONES (7)">OBSERVATIONS (7)</div>
             <div class="form-group">
                 <textarea id="observations" name="observations" rows="4" class="w-full" placeholder="Enter any relevant observations here." data-en-placeholder="Enter any relevant observations here." data-es-placeholder="Escriba aquí cualquier observación relevante."></textarea>
             </div>
         </section>
 
-        <section>
+        <section id="declarant-section">
             <div class="subsection-title" data-en="DECLARANT (8)" data-es="DECLARANTE (8)">DECLARANT (8)</div>
             <div class="form-group">
                     <label for="declarant-name" data-en="Mr./Ms." data-es="D./Dª.">Mr./Ms.</label>
@@ -918,36 +918,36 @@
          * allowing the user to copy and paste the content.
          */
         function exportFormAsText() {
-            // This function directly extracts data and labels without temporary DOM manipulation.
-            // It uses the labelTranslations map for Spanish labels and reads current English input values.
             let formData = '';
             const formContainer = document.getElementById('formContainer');
             const processedRadioGroups = new Set(); // To prevent duplicate processing of radio groups
 
             // --- Header Section ---
-            formData += labelTranslations['SPANISH CONSULAR SERVICE'].trim() + '\n';
-            formData += labelTranslations['CONSULAR CIVIL REGISTRY OF SPAIN IN'].trim() + '\n';
-            formData += labelTranslations['CIVIL REGISTRY'].trim() + '\n\n';
-            formData += labelTranslations['Section I. BIRTHS'].trim() + '\n';
-            formData += labelTranslations['(Declaration of data for registration)'].trim() + '\n';
-            formData += labelTranslations['Important note: Before filling out, see instructions on the back (below).'].trim() + '\n\n';
+            // These texts are retrieved from the data-es attributes of the original HTML elements
+            formData += document.querySelector('h1[data-es]').getAttribute('data-es').trim() + '\n';
+            formData += document.querySelector('h2[data-es]').getAttribute('data-es').trim() + '\n';
+            formData += document.querySelector('h3[data-es]').getAttribute('data-es').trim() + '\n\n';
+            formData += document.querySelector('section:nth-of-type(2) p:nth-of-type(1)[data-es]').getAttribute('data-es').trim() + '\n';
+            formData += document.querySelector('section:nth-of-type(2) p:nth-of-type(2)[data-es]').getAttribute('data-es').trim() + '\n';
+            formData += document.querySelector('section:nth-of-type(2) p:nth-of-type(3)[data-es]').getAttribute('data-es').trim() + '\n\n';
 
 
             // --- Iterate through form sections and fields ---
             const sectionsToProcess = [
-                { selector: 'section:nth-of-type(3)', titleKey: 'BIRTH DATA' }, // Birth Data Section
-                { selector: 'section:nth-of-type(4)', titleKey: 'FATHER\'S DATA (5)' }, // Father's Data Section
-                { selector: 'section:nth-of-type(5)', titleKey: 'MOTHER\'S DATA (5)' }, // Mother's Data Section
-                { selector: 'section:nth-of-type(7)', titleKey: 'PARENTS\' MARRIAGE (6)' }, // Parents' Marriage Section
-                { selector: 'section:nth-of-type(8)', titleKey: 'OBSERVATIONS (7)' }, // Observations Section
-                { selector: 'section:nth-of-type(9)', titleKey: 'DECLARANT (8)' } // Declarant Section
+                { selector: '#birth-data-section', titleKey: 'BIRTH DATA' },
+                { selector: '#father-data-section', titleKey: 'FATHER\'S DATA (5)' },
+                { selector: '#mother-data-section', titleKey: 'MOTHER\'S DATA (5)' },
+                { selector: '#marriage-section', titleKey: 'PARENTS\' MARRIAGE (6)' },
+                { selector: '#observations-section', titleKey: 'OBSERVATIONS (7)' },
+                { selector: '#declarant-section', titleKey: 'DECLARANT (8)' }
             ];
 
             sectionsToProcess.forEach(sectionInfo => {
                 const sectionElement = document.querySelector(sectionInfo.selector);
                 if (!sectionElement) return;
 
-                const sectionTitle = labelTranslations[sectionInfo.titleKey];
+                const sectionTitleEl = sectionElement.querySelector('.subsection-title');
+                let sectionTitle = sectionTitleEl ? sectionTitleEl.getAttribute('data-es') : labelTranslations[sectionInfo.titleKey];
                 if (sectionTitle) {
                     formData += `--- ${sectionTitle} ---\n`;
                 }
@@ -955,86 +955,92 @@
                 sectionElement.querySelectorAll('input, select, textarea').forEach(input => {
                     let fieldLabel = '';
                     let fieldValue = '';
-                    const inputId = input.id || input.name;
+                    const inputId = input.id || input.name; // Use ID first, then name
 
-                    // Get the Spanish label from the labelTranslations map
+                    // Determine the label for the field
                     if (labelTranslations[inputId] && typeof labelTranslations[inputId] === 'string') {
                         fieldLabel = labelTranslations[inputId];
                     } else if (labelTranslations[inputId] && typeof labelTranslations[inputId] === 'object' && labelTranslations[inputId].group_label) {
-                         // For radio groups, use the group_label
-                         fieldLabel = labelTranslations[inputId].group_label;
+                        fieldLabel = labelTranslations[inputId].group_label; // For radio groups
                     } else {
-                        // Fallback to the English label from the DOM if a direct translation isn't found
-                        const labelEl = document.querySelector(`label[for="${inputId}"]`);
-                        if (labelEl) {
-                            fieldLabel = labelEl.textContent.trim();
-                        } else if (input.hasAttribute('placeholder')) {
-                            fieldLabel = input.getAttribute('placeholder');
+                        // Fallback: try to find an associated label element's data-es attribute
+                        const labelEl = document.querySelector(`label[for="${input.id}"]`);
+                        if (labelEl && labelEl.hasAttribute('data-es')) {
+                            fieldLabel = labelEl.getAttribute('data-es');
+                        } else if (input.hasAttribute('data-es-placeholder')) {
+                            fieldLabel = input.getAttribute('data-es-placeholder');
                         } else {
-                            fieldLabel = inputId; // Use ID/Name as a last resort
+                            fieldLabel = input.name || input.id || ''; // Fallback to name or id if no specific label or placeholder
                         }
                     }
 
+                    // Get the value of the field
                     if (input.type === 'radio') {
                         if (processedRadioGroups.has(input.name)) {
                             return; // Skip if this radio group has already been processed
                         }
                         const selectedRadio = document.querySelector(`input[name="${input.name}"]:checked`);
                         if (selectedRadio) {
-                            // Get the Spanish translation for the selected radio option value
-                            const selectedOptionValue = selectedRadio.value;
-                            fieldValue = labelTranslations[input.name] && labelTranslations[input.name][selectedOptionValue] ? labelTranslations[input.name][selectedOptionValue] : selectedOptionValue;
+                            // Get Spanish text for the selected radio option from its span's data-es
+                            const spanEl = selectedRadio.nextElementSibling;
+                            fieldValue = spanEl ? spanEl.getAttribute('data-es') : selectedRadio.value;
                         } else {
                             fieldValue = '(No seleccionado)';
                         }
                         processedRadioGroups.add(input.name); // Mark group as processed
-
                     } else if (input.tagName === 'SELECT') {
                         fieldValue = input.options[input.selectedIndex].text;
                     } else {
                         fieldValue = input.value;
                     }
-
+                    
                     formData += `${fieldLabel}: ${fieldValue}\n`;
                 });
-                formData += '\n'; // Add a newline after each group of fields
+                formData += '\n'; // Add a newline after each section's fields
             });
 
             // --- Footer ---
-            formData += labelTranslations['Continues on back.../'].trim() + '\n\n';
+            const footerEl = document.querySelector('.form-footer');
+            if (footerEl && footerEl.hasAttribute('data-es')) {
+                formData += `${footerEl.getAttribute('data-es').trim()}\n\n`;
+            }
 
             // --- Instructions Section ---
             const instructionsSection = document.querySelector('.instruction-section');
             if (instructionsSection) {
-                const instructionsTitle = labelTranslations['INSTRUCTIONS'];
+                const instructionsTitle = instructionsSection.querySelector('.section-title[data-es]').getAttribute('data-es');
                 formData += `--- ${instructionsTitle} ---\n`;
                 
-                // Get the main paragraph of instructions
-                formData += labelTranslations['Fill in by typewriter or by hand in block letters.'].trim() + '\n';
+                // Main paragraph of instructions
+                const mainInstructionP = instructionsSection.querySelector('.notes p[data-es]');
+                if (mainInstructionP && mainInstructionP.hasAttribute('data-es')) {
+                    formData += mainInstructionP.getAttribute('data-es').trim() + '\n';
+                }
                 
-                // Get list items and their content
+                // List items with strong and span
                 const listItems = instructionsSection.querySelectorAll('.notes ul li');
                 listItems.forEach(li => {
-                    const strongTag = li.querySelector('strong');
-                    const spanTag = li.querySelector('span');
+                    const strongSpan = li.querySelector('strong'); // Strong tag with data-en/es
+                    const contentSpan = li.querySelector('span');  // Span tag with data-en/es
                     let listItemText = '';
-                    if (strongTag && strongTag.hasAttribute('data-es')) {
-                        listItemText += strongTag.getAttribute('data-es').trim() + ' ';
-                    } else if (strongTag) {
-                        listItemText += strongTag.textContent.trim() + ' ';
+
+                    if (strongSpan && strongSpan.hasAttribute('data-es')) {
+                        listItemText += strongSpan.getAttribute('data-es').trim() + ' ';
+                    } else if (strongSpan) {
+                         listItemText += strongSpan.textContent.trim() + ' '; // Fallback to current text if no data-es
                     }
 
-                    if (spanTag && spanTag.hasAttribute('data-es')) {
-                        listItemText += spanTag.getAttribute('data-es').trim();
-                    } else if (spanTag) {
-                        listItemText += spanTag.textContent.trim();
+                    if (contentSpan && contentSpan.hasAttribute('data-es')) {
+                        listItemText += contentSpan.getAttribute('data-es').trim();
+                    } else if (contentSpan) {
+                        listItemText += contentSpan.textContent.trim(); // Fallback to current text if no data-es
                     }
                     if (listItemText) {
                         formData += `- ${listItemText}\n`;
                     }
                 });
 
-                // Get the final NOTE paragraph
+                // Final NOTE paragraph
                 const finalNote = instructionsSection.querySelector('.notes p.mt-4.font-bold.text-sm');
                 if (finalNote && finalNote.hasAttribute('data-es')) {
                     formData += `\n${finalNote.getAttribute('data-es').trim()}\n`;
